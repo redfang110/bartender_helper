@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const recipesContainer = document.getElementById('recipes-container');
 
     // Fetch the JSON data
-    fetch('./data.json')
     fetch('./../_json/data.json')
         .then(response => response.json())
         .then(data => {
@@ -36,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Display tools
                 // tools item
                 // Display tools
-const toolsItem = document.createElement('li');
-toolsItem.textContent = `Tools: ${recipe.tools.join(', ')}`;
-recipeDetailsList.appendChild(toolsItem);
+                const toolsItem = document.createElement('li');
+                toolsItem.textContent = `Tools: ${recipe.tools.join(', ')}`;
+                recipeDetailsList.appendChild(toolsItem);
 
 
 
