@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fetch the JSON data
     fetch('./data.json')
+    fetch('./../_json/data.json')
         .then(response => response.json())
         .then(data => {
             // Access the recipes array from the data
