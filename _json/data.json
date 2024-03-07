@@ -9,8 +9,9 @@
         "tools": ["Cocktail Shaker"],
         "garnish": ["Lemon Twist", "Cocktail Cherry"],
         "prefered glass": ["Champagne Flute"],
-        "recipe": ["Fill Cocktail Shaker halfway with ice.", "Pour Vodka, Lemon Juice, and Simple Syrup into the Cocktail Shaker.", "Shake well for 15 seconds or until very cold.", "Strain mix into Champagne Flute.", "Top with Chamoagne.", "Add Cocktail Cherry or Lemon Twist to garnish.", "Serve."]
-        },
+        "recipe": ["Fill Cocktail Shaker halfway with ice.", "Pour Vodka, Lemon Juice, and Simple Syrup into the Cocktail Shaker.", "Shake well for 15 seconds or until very cold.", "Strain mix into Champagne Flute.", "Top with Chamoagne.", "Add Cocktail Cherry or Lemon Twist to garnish.", "Serve."],
+        "image": ["./../images/French_76.jpeg"]
+    },
         {
         "name": "Tom Collins",
         "spirits": ["Gin"],
@@ -20,21 +21,23 @@
         "tools": ["Cocktail Shaker"],
         "garnish": ["Lemon Wedge", "Cocktail Cherry"],
         "prefered glass": ["Collins Glass"],
-        "recipe": ["Fill Cocktail Shaker halfway with ice.", "Pour Gin, Lemon Juice, and Simple Syrup into the Cocktail Shaker.", "Shake well for 15 seconds or until very cold.", "Strain mix into Collins Glass.", "Top with Club Soda.", "Add Cocktail Cherry and/or Lemon Wedge to garnish.", "Serve."]
-        }
+        "recipe": ["Fill Cocktail Shaker halfway with ice.", "Pour Gin, Lemon Juice, and Simple Syrup into the Cocktail Shaker.", "Shake well for 15 seconds or until very cold.", "Strain mix into Collins Glass.", "Top with Club Soda.", "Add Cocktail Cherry and/or Lemon Wedge to garnish.", "Serve."],
+        "image": ["./../images/Tom_Collins.jpeg"]
+        
+    }
     ],
     "spirits":[
-        {"name": "Vodka", "category": "Vodka"},
-        {"name": "Dry Gin", "category": "Gin"},
+        {"name": "Vodka", "category": "Vodka","image":"./../images/Vodka.jpeg"},
+        {"name": "Dry Gin", "category": "Gin","image":"./../images/Dry_Gin.jpeg"},
         {"name": "Champagne", "category": "Sparkling Wine"}
     ],
     "mixers":[
-        {"name": "Lemon Juice", "category": "Juice"},
-        {"name": "Simple Syrup", "category": "Syrup"},
-        {"name": "Club Soda", "category": "Soda"}
+        {"name": "Lemon Juice", "category": "Juice","image":"./../images/Lemon_Juic.jpeg"},
+        {"name": "Simple Syrup", "category": "Syrup","image":"./../images/Simple_Syrup.jpeg"},
+        {"name": "Club Soda", "category": "Soda","image":"./../images/Club_Soda.jpeg"}
     ],
     "tools":[
-        {"name": "Cocktail Shaker", "descritpion": "Acts as a closed vessel that allows you to quickly and thoroughly mix ingredients together while chilling the drink at the same time."},
-        {"name": "Jigger", "descritpion": "A common bar essential that acts as a cocktail measuring cup. Jiggers are dual-sided and help bartenders cut down on overpouring and remain consistent when crafting cocktails. They have different capacities on each end and range from 0.5 to 2.5 ounces."}
+        {"name": "Cocktail Shaker", "descritpion": "Acts as a closed vessel that allows you to quickly and thoroughly mix ingredients together while chilling the drink at the same time.","image":"./../images/Cocktail_Shaker.jpeg"},
+        {"name": "Jigger", "descritpion": "A common bar essential that acts as a cocktail measuring cup. Jiggers are dual-sided and help bartenders cut down on overpouring and remain consistent when crafting cocktails. They have different capacities on each end and range from 0.5 to 2.5 ounces.","image":"./../images/Jigger.jpeg"}
     ]
 }
