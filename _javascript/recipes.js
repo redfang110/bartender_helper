@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const recipesContainer = document.getElementById('recipes-container');
 
     // Fetch the JSON data
-    fetch('data.json')
+    fetch('./data.json')
         .then(response => response.json())
         .then(data => {
             // Access the recipes array from the data
