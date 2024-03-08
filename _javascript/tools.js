@@ -13,32 +13,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const toolDiv = document.createElement('div');
                 toolDiv.classList.add('tool');
-                toolDiv.classList.add('card');
-                toolDiv.classList.add('shadow-sm');
+                toolDiv.classList.add('element');
                 toolDiv.style = "object-fit:contain;max-width:325px;";
 
-                const toolName = document.createElement('h2');
-                toolName.textContent = tool.name;
-
                 const toolImg = document.createElement('img');
+                toolDiv.classList.add('tool-image');
+                toolDiv.classList.add('image');
                 toolImg.src = tool.image;
-                toolImg.alt = "Tool " + tool.id;
+                toolImg.alt = "tool " + tool.id;
                 toolImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
-
-                const toolBodyDiv = document.createElement('div');
-                toolDiv.classList.add('tool-body');
-                toolDiv.classList.add('card-body');
 
                 // Display tool text
                 const toolText = document.createElement('p');
                 toolText.classList.add('tool-body');
-                toolText.classList.add('card-body');
-                toolText.innerHTML = `<strong>${tool.name}</strong> <br>${tool.description}`;
-                toolBodyDiv.appendChild(toolText);
+                toolText.classList.add('body');
+                toolText.innerHTML = `<strong>${tool.name}</strong> <br>Description: ${tool.description}`;
 
                 toolDiv.appendChild(toolImg);
-                toolDiv.appendChild(toolBodyDiv);
-
+                toolDiv.appendChild(toolText);
                 toolsContainer.appendChild(toolDiv);
             });
         })

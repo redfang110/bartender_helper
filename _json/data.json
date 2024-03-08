@@ -39,7 +39,7 @@
         {"id": "3", "name": "Club Soda", "category": "Soda","image":"./../images/Club_Soda.jpeg"}
     ],
     "tools":[
-        {"name": "Cocktail Shaker", "descritpion": "Acts as a closed vessel that allows you to quickly and thoroughly mix ingredients together while chilling the drink at the same time.","image":"./../images/Cocktail_Shaker.jpeg"},
-        {"name": "Jigger", "descritpion": "A common bar essential that acts as a cocktail measuring cup. Jiggers are dual-sided and help bartenders cut down on overpouring and remain consistent when crafting cocktails. They have different capacities on each end and range from 0.5 to 2.5 ounces.","image":"./../images/Jigger.jpeg"}
+        {"name": "Cocktail Shaker", "description": "Acts as a closed vessel that allows you to quickly and thoroughly mix ingredients together while chilling the drink at the same time.","image":"./../images/Cocktail_Shaker.jpeg"},
+        {"name": "Jigger", "description": "A common bar essential that acts as a cocktail measuring cup. Jiggers are dual-sided and help bartenders cut down on overpouring and remain consistent when crafting cocktails. They have different capacities on each end and range from 0.5 to 2.5 ounces.","image":"./../images/Jigger.jpeg"}
     ]
 }
