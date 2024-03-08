@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bartender Helper - Homepage</title>
     <link rel="stylesheet" href="./_styles/default.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./_styles/index.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -28,10 +28,16 @@
         <p>Discover the art of mixing drinks and become a cocktail crafting master.</p>
 
         <!-- Generator Box (Text Box) -->
-        <div>
-            <label for="generator">Generator:</label>
-            <input type="text" id="generator" name="generator" placeholder="Enter text here">
-        </div>
+       <!-- Generator Box (Text Box and Button) -->
+<!-- Generator Box (Button Only) -->
+<div>
+    <label for="generator">Generator:</label>
+    <div class="generator-container">
+        <button id="generateButton">Generate</button>
+    </div>
+</div>
+
+ 
 
         <!-- Dropdowns for Tools, Spirits, and Mixers -->
         <div>

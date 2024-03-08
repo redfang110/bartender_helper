@@ -1,0 +1,125 @@
+/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    margin-top: 0%;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+main {
+    padding: 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+/* About section styles */
+.about-div {
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #333;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+
+h4 {
+    color: #555;
+}
+
+#about-padding {
+    margin-top: 30px;
+}
+
+/* Authors section styles */
+.authors-div {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.authors h1 {
+    color: #333;
+}
+
+.authors h4 {
+    color: #555;
+}
+
+/* Author card styles */
+.authors {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.author-card {
+    max-width: 300px;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.card-container {
+    text-align: center;
+}
+
+.card-container h2 {
+    color: #333;
+}
+
+.card-container a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.card-p {
+    color: #555;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #fff;
+}

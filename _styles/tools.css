@@ -31,41 +31,35 @@ main {
     padding: 20px;
 }
 
-.tool {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.spirit-container {
+    text-align: center;
+}
+
+.spirit {
+    color: #fff;
+    padding: 10px;
 }
 
 /* Customize styles for recipe details */
-.tool h2 {
+.spirit h2 {
     color: #333;
     margin-bottom: 10px;
+    margin-left: 0%;
 }
 
-.tool ul {
+.spirit ul {
     list-style: none;
     padding: 0;
 }
 
-.tool li {
+.spirit li {
     margin-bottom: 8px;
 }
 
 /* Adjust image size */
-.tool img {
+.spirit img {
     max-width: 50%;
     height: 200px;
     display: block;
     margin: 0;
-}
-
-.tool {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
 }

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Read every tool from the array
         for (let i = 0; i < toolData.tools.length; i++) {
             let name = toolData.tools[i].name;
-            let description = toolData.tools[i].descritpion; // Typo in your JSON, should be "description"
+            let description = toolData.tools[i].description; // Corrected property name
             let image = toolData.tools[i].image; // Assuming you have an 'image' property
             let card = "card" + (i + 1).toString();
 
