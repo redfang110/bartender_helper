@@ -31,20 +31,27 @@ main {
     padding: 20px;
 }
 
-.spirit-container {
-    text-align: center;
-}
-
 .spirit {
-    color: #fff;
-    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; /* Add smooth transition for hover effect */
+    display: flex; /* Make the card a flex container */
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center items horizontally */
 }
 
-/* Customize styles for recipe details */
+.spirit:hover {
+    transform: scale(1.05); /* Increase size on hover */
+}
+
+/* Customize styles for spirit details */
 .spirit h2 {
     color: #333;
     margin-bottom: 10px;
-    margin-left: 0%;
 }
 
 .spirit ul {
@@ -58,8 +65,9 @@ main {
 
 /* Adjust image size */
 .spirit img {
-    max-width: 50%;
+    width: 200px;
     height: 200px;
-    display: block;
-    margin: 0;
+    object-fit: cover; /* Maintain aspect ratio while covering the container */
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom: 10px;
 }

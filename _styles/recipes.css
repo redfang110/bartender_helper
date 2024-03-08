@@ -31,13 +31,33 @@ main {
     padding: 20px;
 }
 
+/* Add styles for the card effect */
+/* Add styles for the card effect */
 .recipe {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 20px;
+    margin: 10px; /* Adjust margin for space between cards */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; /* Add smooth transition for hover effect */
+    display: inline-block; /* Display cards inline */
+    width: calc(33.33% - 20px); /* Set width for 3 cards in a row, adjust as needed */
+    box-sizing: border-box; /* Include padding and border in the total width */
+    text-align: left; /* Align text to the left */
+}
+
+/* Adjust image size */
+.recipe img {
+    width: 100%; /* Make the image fill the container */
+    height: auto;
+    border-radius: 5px; /* Adjust border-radius if needed */
+}
+
+/* Rest of your existing styles */
+
+
+.recipe:hover {
+    transform: scale(1.05); /* Increase size on hover */
 }
 
 /* Customize styles for recipe details */
@@ -56,12 +76,7 @@ main {
 }
 
 /* Adjust image size */
-.recipe img {
-    max-width: 50%;
-    height: 200px;
-    display: block;
-    margin: 0;
-}
+
 
 footer {
     background-color: #333;

@@ -10,12 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Iterate through each mixer and display it
             mixers.forEach(mixer => {
-
                 const mixerDiv = document.createElement('div');
-                mixerDiv.classList.add('mixer');
-                mixerDiv.classList.add('card');
-                mixerDiv.classList.add('shadow-sm');
-                mixerDiv.style = "object-fit:contain;max-width:325px;";
+                mixerDiv.classList.add('mixer', 'card', 'shadow-sm'); // Add card and shadow classes
 
                 const mixerName = document.createElement('h2');
                 mixerName.textContent = mixer.name;
@@ -23,24 +19,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 const mixerImg = document.createElement('img');
                 mixerImg.src = mixer.image;
                 mixerImg.alt = "Mixer " + mixer.id;
-                mixerImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
-
-                const mixerBodyDiv = document.createElement('div');
-                mixerDiv.classList.add('mixer-body');
-                mixerDiv.classList.add('card-body');
+                mixerImg.classList.add('mixer-img'); // Add a class for styling
 
                 // Display mixer text
                 const mixerText = document.createElement('p');
-                mixerText.classList.add('mixer-body');
-                mixerText.classList.add('card-body');
                 mixerText.innerHTML = `<strong>${mixer.name}</strong> <br>Category: ${mixer.category}`;
-                mixerBodyDiv.appendChild(mixerText);
 
                 mixerDiv.appendChild(mixerImg);
-                mixerDiv.appendChild(mixerBodyDiv);
+                mixerDiv.appendChild(mixerText);
 
                 mixersContainer.appendChild(mixerDiv);
             });
         })
         .catch(error => console.error('Error fetching data:', error));
 });
+ 
