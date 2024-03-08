@@ -1,36 +1,46 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const mixersContainer = document.getElementById('mixers-container');
 
-    // Read the file with mixers
+    // Fetch the JSON data
     fetch('./../_json/data.json')
         .then(response => response.json())
-        .then(mixerData => loadMixers(mixerData))
+        .then(data => {
+            // Access the mixers array from the data
+            const mixers = data.mixers;
+
+            // Iterate through each mixer and display it
+            mixers.forEach(mixer => {
+
+                const mixerDiv = document.createElement('div');
+                mixerDiv.classList.add('mixer');
+                mixerDiv.classList.add('card');
+                mixerDiv.classList.add('shadow-sm');
+                mixerDiv.style = "object-fit:contain;max-width:325px;";
+
+                const mixerName = document.createElement('h2');
+                mixerName.textContent = mixer.name;
+
+                const mixerImg = document.createElement('img');
+                mixerImg.src = mixer.image;
+                mixerImg.alt = "Mixer " + mixer.id;
+                mixerImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
+
+                const mixerBodyDiv = document.createElement('div');
+                mixerDiv.classList.add('mixer-body');
+                mixerDiv.classList.add('card-body');
+
+                // Display mixer text
+                const mixerText = document.createElement('p');
+                mixerText.classList.add('mixer-body');
+                mixerText.classList.add('card-body');
+                mixerText.innerHTML = `<strong>${mixer.name}</strong> <br>Category: ${mixer.category}`;
+                mixerBodyDiv.appendChild(mixerText);
+
+                mixerDiv.appendChild(mixerImg);
+                mixerDiv.appendChild(mixerBodyDiv);
+
+                mixersContainer.appendChild(mixerDiv);
+            });
+        })
         .catch(error => console.error('Error fetching data:', error));
-
-    function loadMixers(mixerData) {
-
-        // Find the element “mixers-container” in HTML
-        let mixerContainer = document.getElementById("mixers-container");
-
-        // Read every mixer from the array
-        for (let i = 0; i < mixerData.mixers.length; i++) {
-            let name = mixerData.mixers[i].name;
-            let category = mixerData.mixers[i].category;
-            let image = mixerData.mixers[i].image; // Assuming you have an 'image' property
-            let card = "card" + (i + 1).toString();
-
-            let AddCardMixer = document.createElement("div");
-            AddCardMixer.classList.add("col");
-            AddCardMixer.innerHTML = `
-                <div id=${card} class="card shadow-sm" style="object-fit: contain; max-height: 325px; max-width: 325px;">
-                    <img src=${image} class="card-img-top" alt="${name}" style="object-fit: contain; max-height: 250px; max-width: 250px; height: auto; width: auto; display: block;">
-                    <div class="card-body">
-                        <p class="card-text"><strong>${name}</strong><br>${category}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                        </div>
-                    </div>
-                </div>`;
-
-            mixerContainer.appendChild(AddCardMixer);
-        }
-    }
 });
