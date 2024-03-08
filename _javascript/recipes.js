@@ -12,9 +12,20 @@ document.addEventListener('DOMContentLoaded', function () {
             recipes.forEach(recipe => {
                 const recipeDiv = document.createElement('div');
                 recipeDiv.classList.add('recipe');
+                recipeDiv.style = "object-fit:contain;max-width:500px;";
 
                 const recipeName = document.createElement('h2');
                 recipeName.textContent = recipe.name;
+
+                const recipeImg = document.createElement('img');
+                recipeImg.src = recipe.image;
+                recipeImg.alt = "Cocktail " + recipe.id;
+                recipeImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
+
+                const recipeIngredientsBold = document.createElement('b');
+                recipeIngredientsBold.textContent = "Ingredients:";
+                const recipeIngredients = document.createElement('p');
+                recipeIngredients.appendChild(recipeIngredientsBold);
 
                 const recipeDetailsList = document.createElement('ul');
 
@@ -33,32 +44,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Display tools
-                // tools item
-                // Display tools
+                const tools = recipe.tools.join(', ');
                 const toolsItem = document.createElement('li');
-                toolsItem.textContent = `Tools: ${recipe.tools.join(', ')}`;
+                const toolsBold = document.createElement('b');
+                toolsBold.textContent = `Tools: `;
+                toolsItem.textContent = `${tools}`;
+                recipeDetailsList.appendChild(toolsBold);
                 recipeDetailsList.appendChild(toolsItem);
-
-
 
                 // Display garnish
                 const garnish = recipe.garnish.join(', ');
                 const garnishItem = document.createElement('li');
-                garnishItem.textContent = `Garnish: ${garnish}`;
+                const garnishBold = document.createElement('b');
+                garnishBold.textContent = `Garnish: `
+                garnishItem.textContent = `${garnish}`;
+                recipeDetailsList.appendChild(garnishBold);
                 recipeDetailsList.appendChild(garnishItem);
 
                 // Display preferred glass
                 const glass = recipe['prefered glass'].join(', ');
                 const glassItem = document.createElement('li');
-                glassItem.textContent = `Preferred Glass: ${glass}`;
+                const glassBold = document.createElement('b');
+                glassBold.textContent = `Preferred Glass: `;
+                glassItem.textContent = `${glass}`;
+                recipeDetailsList.appendChild(glassBold);
                 recipeDetailsList.appendChild(glassItem);
 
                 // Display recipe steps
                 const recipeStepsItem = document.createElement('li');
-                recipeStepsItem.innerHTML = `Recipe Steps: <ul>${recipe.recipe.map(step => `<li>${step}</li>`).join('')}</ul>`;
+                recipeStepsItem.innerHTML = `<strong>Recipe Steps:</strong> <ul>${recipe.recipe.map(step => `<li>${step}</li>`).join('')}</ul>`;
                 recipeDetailsList.appendChild(recipeStepsItem);
 
                 recipeDiv.appendChild(recipeName);
+                recipeDiv.appendChild(recipeImg);
+                recipeDiv.appendChild(recipeIngredients);
                 recipeDiv.appendChild(recipeDetailsList);
 
                 recipesContainer.appendChild(recipeDiv);

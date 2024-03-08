@@ -1,50 +1,46 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const mixersContainer = document.getElementById('mixers-container');
 
-// Read the file with movies :
-fetch('./../_json/data.json')
+    // Fetch the JSON data
+    fetch('./../_json/data.json')
         .then(response => response.json())
-        .then(mixerData => loadMixers(mixerData)).catch(error => console.error('Error fetching data:', error));
+        .then(data => {
+            // Access the mixers array from the data
+            const mixers = data.mixers;
 
+            // Iterate through each mixer and display it
+            mixers.forEach(mixer => {
 
-function loadMixers(mixerData) {
-    
-    // Find the element “mixers-container” in HTML
-    let mixerContainer = document.getElementById("mixers-container");
-    let cards = [];
+                const mixerDiv = document.createElement('div');
+                mixerDiv.classList.add('mixer');
+                mixerDiv.classList.add('card');
+                mixerDiv.classList.add('shadow-sm');
+                mixerDiv.style = "object-fit:contain;max-width:325px;";
 
-    // Read every mixer from the array
-    for (var i = 0; i < mixerData.mixers.length; i++){
-        let name = mixerData.mixers[i].name;
-        let category = mixerData.mixers[i].category;
-        // let url = mixerData.mixers[i].url;
-        let card = "card" + (i + 1).toString();
+                const mixerName = document.createElement('h2');
+                mixerName.textContent = mixer.name;
 
-        let AddCardMixer = document.createElement("div");
-        AddCardMixer.classList.add("col");
-        AddCardMixer.innerHTML = `
-            <div id=${card} class="card shadow-sm" style="object-fit:contain;max-height:325px;max-width:325px;">
-                <div class="card-body">
-                    <p class="card-text"> <strong>${name}</strong> <br>${category}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                    </div>
-                </div>
-            </div>`;
+                const mixerImg = document.createElement('img');
+                mixerImg.src = mixer.image;
+                mixerImg.alt = "Mixer " + mixer.id;
+                mixerImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
 
-        mixerContainer.appendChild(AddCardMixer);
-        let ccard = document.getElementById(card);
-        cards.push(ccard);
-    }
-}
+                const mixerBodyDiv = document.createElement('div');
+                mixerDiv.classList.add('mixer-body');
+                mixerDiv.classList.add('card-body');
+
+                // Display mixer text
+                const mixerText = document.createElement('p');
+                mixerText.classList.add('mixer-body');
+                mixerText.classList.add('card-body');
+                mixerText.innerHTML = `<strong>${mixer.name}</strong> <br>Category: ${mixer.category}`;
+                mixerBodyDiv.appendChild(mixerText);
+
+                mixerDiv.appendChild(mixerImg);
+                mixerDiv.appendChild(mixerBodyDiv);
+
+                mixersContainer.appendChild(mixerDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
 });
-
-            // <input type="checkbox" id=${checkbox} class="form-check-input" checked>
-            // <label for=${checkbox} class="form-check-label">Show Image ${i + 1}</label>
-            // <div id=${card} class="card shadow-sm" style="object-fit:contain;max-height:325px;max-width:325px;">
-            //     <img src=${url} class="card-img-top" alt="..." style="object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;"></img>
-            //     <div class="card-body">
-            //         <p class="card-text"> <strong>${title}</strong>, <br>${year}</p>
-            //         <div class="d-flex justify-content-between align-items-center">
-                    
-            //         </div>
-            //     </div>
-            // </div>`;
