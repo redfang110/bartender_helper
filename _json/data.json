@@ -31,7 +31,7 @@
     "spirits":[
         {"id": "1", "name": "Vodka", "category": "Vodka","image":"./../images/Vodka.jpeg"},
         {"id": "2", "name": "Dry Gin", "category": "Gin","image":"./../images/Dry_Gin.jpeg"},
-        {"id": "3", "name": "Champagne", "category": "Sparkling Wine"}
+        {"id": "3", "name": "Champagne", "category": "Sparkling Wine","image":"./../images/Champagne.jpeg"}
     ],
     "mixers":[
         {"id": "1", "name": "Lemon Juice", "category": "Juice","image":"./../images/Lemon_Juice.jpeg"},
