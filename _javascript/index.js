@@ -1,5 +1,3 @@
-// index.js
-
 document.addEventListener('DOMContentLoaded', function () {
     // Fetch the data from data.json (replace with the correct path if needed)
     fetch('./../_json/data.json') // Adjust the path based on your project structure
