@@ -29,10 +29,10 @@
     "spirits":[
         {"name": "Vodka", "category": "Vodka","image":"./../images/Vodka.jpeg"},
         {"name": "Dry Gin", "category": "Gin","image":"./../images/Dry_Gin.jpeg"},
-        {"name": "Champagne", "category": "Sparkling Wine"}
+        {"name": "Champagne", "category": "Sparkling Wine","image":"./../images/Champagne.jpeg"}
     ],
     "mixers":[
-        {"name": "Lemon Juice", "category": "Juice","image":"./../images/Lemon_Juic.jpeg"},
+        {"name": "Lemon Juice", "category": "Juice","image":"./../images/Lemon_Juice.jpeg"},
         {"name": "Simple Syrup", "category": "Syrup","image":"./../images/Simple_Syrup.jpeg"},
         {"name": "Club Soda", "category": "Soda","image":"./../images/Club_Soda.jpeg"}
     ],
