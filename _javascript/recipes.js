@@ -12,14 +12,18 @@ document.addEventListener('DOMContentLoaded', function () {
             recipes.forEach(recipe => {
                 const recipeDiv = document.createElement('div');
                 recipeDiv.classList.add('recipe');
+                recipeDiv.classList.add('element');
                 recipeDiv.style = "object-fit:contain;max-width:500px;";
 
                 const recipeName = document.createElement('h2');
+                recipeName.classList.add('recipe-name');
                 recipeName.textContent = recipe.name;
 
                 const recipeImg = document.createElement('img');
+                recipeImg.classList.add('recipe-image');
+                recipeImg.classList.add('image');
                 recipeImg.src = recipe.image;
-                recipeImg.alt = "Cocktail " + recipe.id;
+                recipeImg.alt = "cocktail " + recipe.id;
                 recipeImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
 
                 const recipeIngredientsBold = document.createElement('b');
@@ -28,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 recipeIngredients.appendChild(recipeIngredientsBold);
 
                 const recipeDetailsList = document.createElement('ul');
+                recipeDetailsList.classList.add('recipe-details');
+                recipeDetailsList.classList.add('body');
 
                 // Display spirits
                 for (let i = 0; i < recipe.spirits.length; i++) {

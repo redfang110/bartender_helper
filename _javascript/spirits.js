@@ -13,19 +13,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const spiritDiv = document.createElement('div');
                 spiritDiv.classList.add('spirit');
+                spiritDiv.classList.add('element');
                 spiritDiv.style = "object-fit:contain;max-width:325px;";
 
-                const spiritName = document.createElement('h2');
-                spiritName.textContent = spirit.name;
-
                 const spiritImg = document.createElement('img');
+                spiritImg.classList.add('spirit-image');
+                spiritImg.classList.add('image');
                 spiritImg.src = spirit.image;
-                spiritImg.alt = "Spirit " + spirit.id;
+                spiritImg.alt = "spirit " + spirit.id;
                 spiritImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
 
                 // Display spirit text
                 const spiritText = document.createElement('p');
                 spiritText.classList.add('spirit-body');
+                spiritText.classList.add('body');
                 spiritText.innerHTML = `<strong>${spirit.name}</strong> <br>Category: ${spirit.category}`;
 
                 spiritDiv.appendChild(spiritImg);

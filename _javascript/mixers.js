@@ -13,32 +13,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const mixerDiv = document.createElement('div');
                 mixerDiv.classList.add('mixer');
-                mixerDiv.classList.add('card');
-                mixerDiv.classList.add('shadow-sm');
+                mixerDiv.classList.add('element');
                 mixerDiv.style = "object-fit:contain;max-width:325px;";
 
-                const mixerName = document.createElement('h2');
-                mixerName.textContent = mixer.name;
-
                 const mixerImg = document.createElement('img');
+                mixerDiv.classList.add('mixer-image');
+                mixerDiv.classList.add('image');
                 mixerImg.src = mixer.image;
-                mixerImg.alt = "Mixer " + mixer.id;
+                mixerImg.alt = "mixer " + mixer.id;
                 mixerImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
-
-                const mixerBodyDiv = document.createElement('div');
-                mixerDiv.classList.add('mixer-body');
-                mixerDiv.classList.add('card-body');
 
                 // Display mixer text
                 const mixerText = document.createElement('p');
                 mixerText.classList.add('mixer-body');
-                mixerText.classList.add('card-body');
+                mixerText.classList.add('body');
                 mixerText.innerHTML = `<strong>${mixer.name}</strong> <br>Category: ${mixer.category}`;
-                mixerBodyDiv.appendChild(mixerText);
 
                 mixerDiv.appendChild(mixerImg);
-                mixerDiv.appendChild(mixerBodyDiv);
-
+                mixerDiv.appendChild(mixerText);
                 mixersContainer.appendChild(mixerDiv);
             });
         })

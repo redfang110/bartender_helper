@@ -2,15 +2,17 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Playfair Display', serif; /* Elegant serif font */
+    background-color: #f3f0e4; /* Champagne */
+    color: #333333; /* Charcoal Gray */
+    min-height: 100vh; /* Ensure at least 100% of the viewport height */
+    overflow-x: hidden; /* Hide horizontal overflow */
 }
 
 /* Navbar styles */
 #navbar {
-    background-color: #007bff; /* A nice shade of blue */
-    color: white;
+    background-color: #512da8; /* Deep Purple */
+    color: #fff;
     overflow: hidden;
 }
 
@@ -26,14 +28,16 @@ body, html {
 
 #navbar ul li a {
     display: block;
-    color: white;
+    color: #fff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    border: 1px solid #512da8; /* Deep Purple */
+    border-radius: 5px;
 }
 
 #navbar ul li a:hover {
-    background-color: #0056b3; /* Darker shade of blue on hover */
+    background-color: #b76e79; /* Rose Gold */
 }
 
 /* Main content styling */
@@ -41,23 +45,37 @@ main {
     padding: 20px;
     background-color: #fff;
     margin: 20px auto;
-    max-width: 1200px; /* Max width for the content */
-    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0; /* Light Gray */
+    border-radius: 10px;
+    overflow-y: auto; /* Add vertical scrollbar if needed */
 }
 
 h1 {
-    color: #333;
+    color: #512da8; /* Deep Purple */
 }
 
 /* Footer styles */
 footer {
-    background-color: #007bff;
-    color: white;
+    background-color: #512da8; /* Deep Purple */
+    color: #fff;
     text-align: center;
     padding: 10px;
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    border-top: 1px solid #fff; /* White */
+}
+
+/* Additional sketchy styles */
+body, #navbar ul li a, main, footer {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    border-left: 5px solid #b76e79; /* Rose Gold */
+    border-right: 5px solid #b76e79; /* Rose Gold */
 }
 
 /* Responsive styling */

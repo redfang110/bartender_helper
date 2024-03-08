@@ -11,8 +11,8 @@ header {
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: #f8f8f8; /* Add your desired background color */
-    z-index: 1000; /* Set a high z-index to ensure it stays above other elements */
+    background-color: #f8f8f8;
+    z-index: 1000;
 }
 
 #navbar {
@@ -33,14 +33,78 @@ nav ul li {
 
 main {
     text-align: center;
-    margin-top: 80px; /* Adjust margin to make space for the fixed navbar */
+    margin-top: 80px;
 }
 
 div {
     margin-top: 40px;
-    padding: 20px; /* Add padding to increase the size of the white box */
-    background-color: #ffffff; /* Set the background color of the white box */
-    border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
 }
 
-/* Add more styles as needed */
+/* Styles for the text box */
+#generator {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 300px; /* Adjust width as needed */
+}
+
+/* Styles for the dropdowns */
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 300px; /* Adjust width as needed */
+}
+
+/* Optional: Style the options within the dropdown */
+select option {
+    background-color: #ffffff;
+    color: #333;
+}
+/* Styles for the button container */
+.generator-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Styles for the button */
+#generateButton {
+    padding: 15px 20px; /* Increase padding for a bigger button */
+    font-size: 16px; /* Increase font size for better visibility */
+    background-color: #4CAF50; /* Green background color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Increase border-radius for rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect for the button */
+#generateButton:hover {
+    background-color: #45a049;
+}
+
+/* Styles for the dropdown container */
+.dropdown-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
+}
+
+/* Styles for the labels and dropdowns */
+label {
+    margin-right: 10px; /* Add some space between labels and dropdowns */
+}
+
+select {
+    margin-bottom: 10px; /* Add margin to the bottom of each dropdown */
+    flex: 1; /* Allow the dropdowns to take up equal space */
+    max-width: 200px; /* Set a max-width for better alignment */
+}
+
