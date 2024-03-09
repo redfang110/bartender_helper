@@ -90,7 +90,7 @@ main {
 /* Adjust image size */
 img {
     width: 200px; /* Make the image fill the container */
-    height: 150px;
+    height: 100px;
     border-radius: 5px; /* Adjust border-radius if needed */
 }
 
