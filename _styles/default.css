@@ -1,8 +1,11 @@
+/* Import Google Fonts - Patrick Hand */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 /* General body styling */
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Playfair Display', serif; /* Elegant serif font */
+    font-family: 'Patrick Hand', cursive; /* Handwriting-style font */
     background-color: #f3f0e4; /* Champagne */
     color: #333333; /* Charcoal Gray */
     min-height: 100vh; /* Ensure at least 100% of the viewport height */
@@ -34,6 +37,7 @@ body, html {
     text-decoration: none;
     border: 1px solid #512da8; /* Deep Purple */
     border-radius: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Add sketchy text shadow */
 }
 
 #navbar ul li a:hover {
@@ -50,10 +54,12 @@ main {
     border: 1px solid #e0e0e0; /* Light Gray */
     border-radius: 10px;
     overflow-y: auto; /* Add vertical scrollbar if needed */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Add sketchy text shadow */
 }
 
 h1 {
     color: #512da8; /* Deep Purple */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Add sketchy text shadow */
 }
 
 /* Footer styles */
@@ -66,6 +72,7 @@ footer {
     bottom: 0;
     width: 100%;
     border-top: 1px solid #fff; /* White */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Add sketchy text shadow */
 }
 
 /* Additional sketchy styles */
