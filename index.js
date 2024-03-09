@@ -92,9 +92,7 @@ function addRecipe(recipe) {
     const recipeImg = document.createElement('img');
     recipeImg.classList.add('recipe-image');
     recipeImg.classList.add('image');
-    let src = "" + recipe.image;
-    src.replace("../", "");
-    recipeImg.src = src;
+    recipeImg.src = "./images/" + recipe.image;
     recipeImg.alt = "cocktail " + recipe.id;
     recipeImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
 

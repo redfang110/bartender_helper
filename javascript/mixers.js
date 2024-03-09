@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const mixerImg = document.createElement('img');
                 mixerDiv.classList.add('mixer-image');
                 mixerDiv.classList.add('image');
-                mixerImg.src = mixer.image;
+                mixerImg.src = "./../images/" + mixer.image;
                 mixerImg.alt = "mixer " + mixer.id;
                 mixerImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
 

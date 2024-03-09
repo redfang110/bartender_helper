@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const spiritImg = document.createElement('img');
                 spiritImg.classList.add('spirit-image');
                 spiritImg.classList.add('image');
-                spiritImg.src = spirit.image;
+                spiritImg.src = "./../images/" + spirit.image;
                 spiritImg.alt = "spirit " + spirit.id;
                 spiritImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
 

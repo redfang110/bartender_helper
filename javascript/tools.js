@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const toolImg = document.createElement('img');
                 toolDiv.classList.add('tool-image');
                 toolDiv.classList.add('image');
-                toolImg.src = tool.image;
+                toolImg.src = "./../images/" + tool.image;
                 toolImg.alt = "tool " + tool.id;
                 toolImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
 
