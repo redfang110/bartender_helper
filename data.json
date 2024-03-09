@@ -55,12 +55,16 @@
     "spirits":[
         {"id": "1", "name": "Vodka", "category": "Vodka","image":"./../images/Vodka.jpeg"},
         {"id": "2", "name": "Dry Gin", "category": "Gin","image":"./../images/Dry_Gin.jpeg"},
-        {"id": "3", "name": "Champagne", "category": "Sparkling Wine","image":"./../images/Champagne.jpeg"}
+        {"id": "3", "name": "Champagne", "category": "Sparkling Wine","image":"./../images/Champagne.jpeg"},
+        {"id": "4", "name": "Tequila", "category": "Tequila","image":"./../images/Tequila.jpeg"},
+        {"id": "5", "name": "Triple Sec", "category": "Orange Liqueur","image":"./../images/Triple_Sec.jpeg"}
     ],
     "mixers":[
         {"id": "1", "name": "Lemon Juice", "category": "Juice","image":"./../images/Lemon_Juice.jpeg"},
         {"id": "2", "name": "Simple Syrup", "category": "Syrup","image":"./../images/Simple_Syrup.jpeg"},
-        {"id": "3", "name": "Club Soda", "category": "Soda","image":"./../images/Club_Soda.jpeg"}
+        {"id": "3", "name": "Club Soda", "category": "Soda","image":"./../images/Club_Soda.jpeg"},
+        {"id": "4", "name": "Lime Juice", "category": "Juice","image":"./../images/Lime_Juice.jpeg"},
+        {"id": "5", "name": "Agave Syrup", "category": "Syrup","image":"./../images/Agave_Syrup.jpeg"}
     ],
     "tools":[
         {"id": "1", "name": "Cocktail Shaker", "description": "Acts as a closed vessel that allows you to quickly and thoroughly mix ingredients together while chilling the drink at the same time.","image":"./../images/Cocktail_Shaker.jpeg"},
