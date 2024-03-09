@@ -32,7 +32,6 @@ main {
 }
 
 /* Add styles for the card effect */
-/* Add styles for the card effect */
 .recipe {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -44,17 +43,19 @@ main {
     width: calc(33.33% - 20px); /* Set width for 3 cards in a row, adjust as needed */
     box-sizing: border-box; /* Include padding and border in the total width */
     text-align: left; /* Align text to the left */
+    height: 300px; /* Set a fixed height for the cards */
+    max-width: 300px; /* Set a maximum width for the cards */
 }
 
 /* Adjust image size */
 .recipe img {
-    width: 100%; /* Make the image fill the container */
-    height: auto;
+    width: 100%; /* Make the image fill the container width */
+    height: 200px; /* Set a fixed height for the images */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
     border-radius: 5px; /* Adjust border-radius if needed */
 }
 
 /* Rest of your existing styles */
-
 
 .recipe:hover {
     transform: scale(1.05); /* Increase size on hover */
@@ -74,7 +75,3 @@ main {
 .recipe li {
     margin-bottom: 8px;
 }
-
-/* Adjust image size */
-
-

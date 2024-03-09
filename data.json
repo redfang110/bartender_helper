@@ -10,7 +10,7 @@
         "tools": ["Cocktail Shaker"],
         "garnish": ["Lemon Twist", "Cocktail Cherry"],
         "prefered glass": ["Champagne Flute"],
-        "recipe": ["Fill Cocktail Shaker halfway with ice.", "Pour Vodka, Lemon Juice, and Simple Syrup into the Cocktail Shaker.", "Shake well for 15 seconds or until very cold.", "Strain mix into Champagne Flute.", "Top with Chamoagne.", "Add Cocktail Cherry or Lemon Twist to garnish.", "Serve."],
+        "recipe": ["Fill Cocktail Shaker halfway with ice.", "Pour Vodka, Lemon Juice, and Simple Syrup into the Cocktail Shaker.", "Shake well for 15 seconds or until very cold.", "Strain mix into Champagne Flute.", "Top with Champagne.", "Add Cocktail Cherry or Lemon Twist to garnish.", "Serve."],
         "image": ["./../images/French_76.jpeg"]
     },
         {
@@ -31,17 +31,17 @@
     {
         "id": "3",
         "name": "Margarita",
-        "spirits": ["Tequila"],
+        "spirits": ["Tequila", "Triple Sec"],
         "spirit-volume": [2],
-        "mixers": ["Triple Sec", "Lime Juice", "Agave Syrup"],
+        "mixers": ["Lime Juice", "Agave Syrup"],
         "mixers-volume": [1, 0.75, 0.5],
-        "tools": ["Shaker"],
+        "tools": ["Cocktail Shaker"],
         "garnish": ["Salt Rim", "Lime Wheel"],
         "prefered glass": ["Margarita Glass"],
         "recipe": [
             "Moisten the rim of the Margarita Glass with a lime wedge.",
             "Dip the rim into salt to coat it.",
-            "Fill the Shaker halfway with ice.",
+            "Fill the Cocktail Shaker halfway with ice.",
             "Pour Tequila, Triple Sec, Lime Juice, and Agave Syrup into the Shaker.",
             "Shake well for 15 seconds or until very cold.",
             "Strain the mix into the prepared Margarita Glass.",

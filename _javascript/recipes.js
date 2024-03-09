@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const recipeDiv = document.createElement('div');
                 recipeDiv.classList.add('recipe');
                 recipeDiv.classList.add('element');
-                recipeDiv.style = "object-fit:contain;max-width:500px;";
+                recipeDiv.style = "object-fit:contain;height:1000px;max-width:500px;";
 
                 const recipeName = document.createElement('h2');
                 recipeName.classList.add('recipe-name');

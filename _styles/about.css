@@ -8,9 +8,48 @@ body {
 }
 
 header {
-  
+    background-color: #333;
     color: #fff;
     padding: 10px;
+}
+
+main {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0; /* Light Gray */
+    border-radius: 10px;
+    overflow-y: auto; /* Add vertical scrollbar if needed */
+}
+
+h1 {
+    color: #512da8; /* Deep Purple */
+}
+
+section {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #512da8; /* Deep Purple */
+    color: #fff;
 }
 
 nav ul {
@@ -28,6 +67,7 @@ nav a {
     text-decoration: none;
     color: #fff;
 }
+
 
 main {
     padding: 20px;
@@ -48,9 +88,9 @@ main {
 }
 
 /* Adjust image size */
-.recipe img {
-    width: 100%; /* Make the image fill the container */
-    height: auto;
+img {
+    width: 200px; /* Make the image fill the container */
+    height: 150px;
     border-radius: 5px; /* Adjust border-radius if needed */
 }
 

@@ -27,28 +27,30 @@
         <h1>Welcome to Bartender Helper</h1>
         <p>Discover the art of mixing drinks and become a cocktail crafting master.</p>
 
-        <!-- Generator Box (Text Box) -->
-        <div>
-            <label for="generator">Generator:</label>
-            <input type="text" id="generator" name="generator" placeholder="Enter text here">
+        <!-- Dropdowns for Tools, Spirits, and Mixers  -->
+        <div style="text-align:center;">
+            <label for="tool">Select Tools:</label>
+            <select id="tool" name="tools">
+                <!-- Options will be populated dynamically using JavaScript  -->
+            </select>
+
+            <label for="spirit">Select Spirits:</label>
+            <select id="spirit" name="spirits">
+                <!-- Options will be populated dynamically using JavaScript  -->
+            </select>
+
+            <label for="mixer">Select Mixers:</label>
+            <select id="mixer" name="mixers">
+                <!-- Options will be populated dynamically using JavaScript  -->
+            </select>
         </div>
 
-        <!-- Dropdowns for Tools, Spirits, and Mixers  -->
-        <div>
-            <label for="tools">Select Tools:</label>
-            <select name="tools" id="tools" multiple>
-                <!-- Options will be populated dynamically using JavaScript  -->
-            </select>
+        <div style="text-align:center;">
+            <button id="recipe-btn">Find Recipes</button>
+        </div>
 
-            <label for="spirits">Select Spirits:</label>
-            <select multiple id="spirits" name="spirits">
-                <!-- Options will be populated dynamically using JavaScript  -->
-            </select>
-
-            <label for="mixers">Select Mixers:</label>
-            <select multiple id="mixers" name="mixers">
-                <!-- Options will be populated dynamically using JavaScript  -->
-            </select>
+        <div id="index-recipes-container" class="container">
+            
         </div>
     </main>
 
@@ -57,7 +59,6 @@
         <p>&copy; 2024 Bartender Helper. All rights reserved.</p>
     </footer>
 
-    
     <script src="./../index.js"></script>
 </body>
 </html>

@@ -72,13 +72,7 @@ main {
 }
 
 /* Styles for the text box */
-#generator {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    width: 300px;
-}
+
 
 /* Styles for the dropdowns */
 select {
@@ -96,12 +90,26 @@ select option {
 }
 
 /* Styles for the button container */
-.generator-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+/* Styles for the text box */
+/* Styles for the text box */
+#generator {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 auto; /* Center horizontally */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+/* Styles for the button container */
+.generator-container {
+    position: relative;
+    height: 100vh; /* Adjust if needed */
+}
+
+
 
 /* Styles for the button */
 #generateButton {
