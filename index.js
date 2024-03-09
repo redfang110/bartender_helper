@@ -37,9 +37,6 @@ async function findRecipe() {
     const selectedSpirit = document.getElementById('spirit').value;
     const selectedMixer = document.getElementById('mixer').value;
     const selectedTool = document.getElementById('tool').value;
-    console.log("selectedSpirit: " + selectedSpirit);
-    console.log("selectedMixer: " + selectedMixer);
-    console.log("selectedTool: " + selectedTool);
 
     const data = await fetchData();
     const recipes = data.recipes;
@@ -50,7 +47,6 @@ async function findRecipe() {
             selectedSpiritCategory = data.spirits[i].category;
         }
     }
-    console.log("selectedSpiritCategory: " + selectedSpiritCategory);
 
     const matchingRecipe = recipes.find(recipe =>
         (recipe.spirits.includes(selectedSpirit) || recipe.spirits.includes(selectedSpiritCategory))
@@ -96,7 +92,9 @@ function addRecipe(recipe) {
     const recipeImg = document.createElement('img');
     recipeImg.classList.add('recipe-image');
     recipeImg.classList.add('image');
-    recipeImg.src = recipe.image;
+    let src = "" + recipe.image;
+    src.replace("../", "");
+    recipeImg.src = src;
     recipeImg.alt = "cocktail " + recipe.id;
     recipeImg.style = "object-fit:contain;max-height:250px;max-width:250px;height:auto;width:auto;";
 

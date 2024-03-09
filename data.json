@@ -11,7 +11,7 @@
         "garnish": ["Lemon Twist", "Cocktail Cherry"],
         "prefered glass": ["Champagne Flute"],
         "recipe": ["Fill Cocktail Shaker halfway with ice.", "Pour Vodka, Lemon Juice, and Simple Syrup into the Cocktail Shaker.", "Shake well for 15 seconds or until very cold.", "Strain mix into Champagne Flute.", "Top with Champagne.", "Add Cocktail Cherry or Lemon Twist to garnish.", "Serve."],
-        "image": ["./images/French_76.jpeg"]
+        "image": ["./../images/French_76.jpeg"]
     },
         {
         "id": "2",
@@ -24,7 +24,7 @@
         "garnish": ["Lemon Wedge", "Cocktail Cherry"],
         "prefered glass": ["Collins Glass"],
         "recipe": ["Fill Cocktail Shaker halfway with ice.", "Pour Gin, Lemon Juice, and Simple Syrup into the Cocktail Shaker.", "Shake well for 15 seconds or until very cold.", "Strain mix into Collins Glass.", "Top with Club Soda.", "Add Cocktail Cherry and/or Lemon Wedge to garnish.", "Serve."],
-        "image": ["./images/Tom_Collins.jpeg"]
+        "image": ["./../images/Tom_Collins.jpeg"]
 
         
     },
@@ -48,27 +48,27 @@
             "Garnish with a Lime Wheel on the rim.",
             "Serve."
         ],
-        "image": ["./images/Margarita.jpeg"]
+        "image": ["./../images/Margarita.jpeg"]
     }
     
     ],
     "spirits":[
-        {"id": "1", "name": "Vodka", "category": "Vodka","image":"./images/Vodka.jpeg"},
-        {"id": "2", "name": "Dry Gin", "category": "Gin","image":"./images/Dry_Gin.jpeg"},
-        {"id": "3", "name": "Champagne", "category": "Sparkling Wine","image":"./images/Champagne.jpeg"},
-        {"id": "4", "name": "Tequila", "category": "Tequila","image":"./images/Tequila.jpeg"},
-        {"id": "5", "name": "Triple Sec", "category": "Orange Liqueur","image":"./images/Triple_Sec.jpeg"}
+        {"id": "1", "name": "Vodka", "category": "Vodka","image":"./../images/Vodka.jpeg"},
+        {"id": "2", "name": "Dry Gin", "category": "Gin","image":"./../images/Dry_Gin.jpeg"},
+        {"id": "3", "name": "Champagne", "category": "Sparkling Wine","image":"./../images/Champagne.jpeg"},
+        {"id": "4", "name": "Tequila", "category": "Tequila","image":"./../images/Tequila.jpeg"},
+        {"id": "5", "name": "Triple Sec", "category": "Orange Liqueur","image":"./../images/Triple_Sec.jpeg"}
     ],
     "mixers":[
-        {"id": "1", "name": "Lemon Juice", "category": "Juice","image":"./images/Lemon_Juice.jpeg"},
-        {"id": "2", "name": "Simple Syrup", "category": "Syrup","image":"./images/Simple_Syrup.jpeg"},
-        {"id": "3", "name": "Club Soda", "category": "Soda","image":"./images/Club_Soda.jpeg"},
-        {"id": "4", "name": "Lime Juice", "category": "Juice","image":"./images/Lime_Juice.jpeg"},
-        {"id": "5", "name": "Agave Syrup", "category": "Syrup","image":"./images/Agave_Syrup.jpeg"}
+        {"id": "1", "name": "Lemon Juice", "category": "Juice","image":"./../images/Lemon_Juice.jpeg"},
+        {"id": "2", "name": "Simple Syrup", "category": "Syrup","image":"./../images/Simple_Syrup.jpeg"},
+        {"id": "3", "name": "Club Soda", "category": "Soda","image":"./../images/Club_Soda.jpeg"},
+        {"id": "4", "name": "Lime Juice", "category": "Juice","image":"./../images/Lime_Juice.jpeg"},
+        {"id": "5", "name": "Agave Syrup", "category": "Syrup","image":"./../images/Agave_Syrup.jpeg"}
     ],
     "tools":[
-        {"id": "1", "name": "Cocktail Shaker", "description": "Acts as a closed vessel that allows you to quickly and thoroughly mix ingredients together while chilling the drink at the same time.","image":"./images/Cocktail_Shaker.jpeg"},
-        {"id": "2", "name": "Jigger", "description": "A common bar essential that acts as a cocktail measuring cup. Jiggers are dual-sided and help bartenders cut down on overpouring and remain consistent when crafting cocktails. They have different capacities on each end and range from 0.5 to 2.5 ounces.","image":"./images/Jigger.jpeg"},
-        {"id": "3", "name": "Muddler", "description": "A tool used to mash or muddle herbs, fruits, and sugar cubes at the bottom of a glass to release their flavor. Commonly used in cocktails like Mojitos and Old Fashioneds.", "image": "./images/Muddler.jpeg"}
+        {"id": "1", "name": "Cocktail Shaker", "description": "Acts as a closed vessel that allows you to quickly and thoroughly mix ingredients together while chilling the drink at the same time.","image":"./../images/Cocktail_Shaker.jpeg"},
+        {"id": "2", "name": "Jigger", "description": "A common bar essential that acts as a cocktail measuring cup. Jiggers are dual-sided and help bartenders cut down on overpouring and remain consistent when crafting cocktails. They have different capacities on each end and range from 0.5 to 2.5 ounces.","image":"./../images/Jigger.jpeg"},
+        {"id": "3", "name": "Muddler", "description": "A tool used to mash or muddle herbs, fruits, and sugar cubes at the bottom of a glass to release their flavor. Commonly used in cocktails like Mojitos and Old Fashioneds.", "image": "./../images/Muddler.jpeg"}
     ]
 }
