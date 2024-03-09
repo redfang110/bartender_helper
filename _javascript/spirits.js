@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const spiritsContainer = document.getElementById('spirits-container');
 
     // Fetch the JSON data
-    fetch('./../_json/data.json')
+    fetch('./../data.json')
         .then(response => response.json())
         .then(data => {
             // Access the spirits array from the data

@@ -1,4 +1,5 @@
-/* Global styles */
+/* styles.css */
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -7,10 +8,9 @@ body {
 }
 
 header {
-    background-color: #333;
+  
     color: #fff;
     padding: 10px;
-    margin-top: 0%;
 }
 
 nav ul {
@@ -33,93 +33,66 @@ main {
     padding: 20px;
 }
 
-.center {
-    text-align: center;
-}
-
-/* About section styles */
-.about-div {
-    margin-bottom: 30px;
-}
-
-h1 {
-    color: #333;
-}
-
-h3 {
-    margin-bottom: 20px;
-}
-
-h4 {
-    color: #555;
-}
-
-#about-padding {
-    margin-top: 30px;
-}
-
-/* Authors section styles */
-.authors-div {
-    margin-top: 50px;
-    text-align: center;
-}
-
-.authors h1 {
-    color: #333;
-}
-
-.authors h4 {
-    color: #555;
-}
-
-/* Author card styles */
-.authors {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.author-card {
-    max-width: 300px;
-    margin: 20px;
-    padding: 15px;
+/* Add styles for the card effect */
+.recipe {
+    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
+    margin: 10px; /* Adjust margin for space between cards */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    transition: transform 0.3s; /* Add smooth transition for hover effect */
+    display: inline-block; /* Display cards inline */
+    width: calc(33.33% - 20px); /* Set width for 3 cards in a row, adjust as needed */
+    box-sizing: border-box; /* Include padding and border in the total width */
+    text-align: left; /* Align text to the left */
 }
 
-.card-container {
-    text-align: center;
+/* Adjust image size */
+.recipe img {
+    width: 100%; /* Make the image fill the container */
+    height: auto;
+    border-radius: 5px; /* Adjust border-radius if needed */
 }
 
-.card-container h2 {
+.recipe:hover {
+    transform: scale(1.05); /* Increase size on hover */
+}
+
+/* Customize styles for recipe details */
+.recipe h2 {
     color: #333;
+    margin-bottom: 10px;
 }
 
-.card-container a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+.recipe ul {
+    list-style: none;
+    padding: 0;
 }
 
-.card-p {
-    color: #555;
+.recipe li {
+    margin-bottom: 8px;
 }
 
-/* Footer styles */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    border-top: 1px solid #fff;
+/* Styles for about.html */
+.about-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+   
+    margin: 20px;
 }
+
+.about-container h2 {
+    
+    margin-bottom: 10px;
+}
+
+.about-container p {
+  
+    line-height: 1.6;
+}
+
+/* Rest of your existing styles */
+
+

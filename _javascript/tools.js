@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const toolsContainer = document.getElementById('tools-container');
 
     // Fetch the JSON data
-    fetch('./../_json/data.json')
+    fetch('./../data.json')
         .then(response => response.json())
         .then(data => {
             // Access the tools array from the data

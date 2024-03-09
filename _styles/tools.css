@@ -31,35 +31,50 @@ main {
     padding: 20px;
 }
 
-.spirit-container {
-    text-align: center;
+/* Add styles for the card effect */
+/* Add styles for the card effect */
+.tool {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px; /* Adjust margin for space between cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; /* Add smooth transition for hover effect */
+    display: inline-block; /* Display cards inline */
+    width: calc(33.33% - 20px); /* Set width for 3 cards in a row, adjust as needed */
+    box-sizing: border-box; /* Include padding and border in the total width */
+    text-align: left; /* Align text to the left */
 }
 
-.spirit {
-    color: #fff;
-    padding: 10px;
+/* Adjust image size */
+.tool img {
+    width: 100%; /* Make the image fill the container */
+    height: auto;
+    border-radius: 5px; /* Adjust border-radius if needed */
+}
+
+/* Rest of your existing styles */
+
+
+.tool:hover {
+    transform: scale(1.05); /* Increase size on hover */
 }
 
 /* Customize styles for recipe details */
-.spirit h2 {
+.tool h2 {
     color: #333;
     margin-bottom: 10px;
-    margin-left: 0%;
 }
 
-.spirit ul {
+.tool ul {
     list-style: none;
     padding: 0;
 }
 
-.spirit li {
+.tool li {
     margin-bottom: 8px;
 }
 
 /* Adjust image size */
-.spirit img {
-    max-width: 50%;
-    height: 200px;
-    display: block;
-    margin: 0;
-}
+
+

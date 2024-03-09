@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mixersContainer = document.getElementById('mixers-container');
 
     // Fetch the JSON data
-    fetch('./../_json/data.json')
+    fetch('./../data.json')
         .then(response => response.json())
         .then(data => {
             // Access the mixers array from the data
