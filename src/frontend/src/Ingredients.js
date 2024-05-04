@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import RecipeResults from './RecipeResults';  // Ensure this is imported correctly
 
-function Ingredients({ setRecipes }) {
+function Ingredients({ setRecipes, recipes }) {
     const [spirits, setSpirits] = useState([]);
     const [mixers, setMixers] = useState([]);
     const [tools, setTools] = useState([]);
@@ -14,15 +15,12 @@ function Ingredients({ setRecipes }) {
             try {
                 const spiritsResponse = await axios.get('http://localhost:4000/api/spirits');
                 setSpirits(spiritsResponse.data);
-
                 const mixersResponse = await axios.get('http://localhost:4000/api/mixers');
                 setMixers(mixersResponse.data);
-
                 const toolsResponse = await axios.get('http://localhost:4000/api/tools');
                 setTools(toolsResponse.data);
             } catch (error) {
                 console.error('Failed to fetch ingredients:', error);
-                // Optionally, handle this error in the UI, e.g., by showing an error message
             }
         };
         fetchData();
@@ -38,7 +36,6 @@ function Ingredients({ setRecipes }) {
             setRecipes(response.data);
         } catch (error) {
             console.error('Failed to find recipes:', error);
-            // Optionally, handle this error in the UI
         }
     };
 
@@ -94,6 +91,7 @@ function Ingredients({ setRecipes }) {
                 ))}
             </div>
             <button onClick={handleFindRecipes}>Find Recipes</button>
+            <RecipeResults recipes={recipes} />
         </div>
     );
 }
