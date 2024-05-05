@@ -40,13 +40,14 @@ function Ingredients({ setRecipes, recipes }) {
     };
 
     return (
-        <div>
+        <div className="container mt-4">
             <h2>Select Ingredients</h2>
-            <div>
+            <div className="mb-3">
                 <h3>Spirits</h3>
                 {spirits.map(spirit => (
-                    <div key={spirit._id}>
+                    <div key={spirit._id} className="form-check">
                         <input
+                            className="form-check-input"
                             type="checkbox"
                             checked={selectedSpirits.includes(spirit.name)}
                             onChange={() => setSelectedSpirits(prev =>
@@ -54,15 +55,17 @@ function Ingredients({ setRecipes, recipes }) {
                                     ? prev.filter(item => item !== spirit.name)
                                     : [...prev, spirit.name]
                             )}
-                        /> {spirit.name}
+                        />
+                        <label className="form-check-label">{spirit.name}</label>
                     </div>
                 ))}
             </div>
-            <div>
+            <div className="mb-3">
                 <h3>Mixers</h3>
                 {mixers.map(mixer => (
-                    <div key={mixer._id}>
+                    <div key={mixer._id} className="form-check">
                         <input
+                            className="form-check-input"
                             type="checkbox"
                             checked={selectedMixers.includes(mixer.name)}
                             onChange={() => setSelectedMixers(prev =>
@@ -70,15 +73,17 @@ function Ingredients({ setRecipes, recipes }) {
                                     ? prev.filter(item => item !== mixer.name)
                                     : [...prev, mixer.name]
                             )}
-                        /> {mixer.name}
+                        />
+                        <label className="form-check-label">{mixer.name}</label>
                     </div>
                 ))}
             </div>
-            <div>
+            <div className="mb-3">
                 <h3>Tools</h3>
                 {tools.map(tool => (
-                    <div key={tool._id}>
+                    <div key={tool._id} className="form-check">
                         <input
+                            className="form-check-input"
                             type="checkbox"
                             checked={selectedTools.includes(tool.name)}
                             onChange={() => setSelectedTools(prev =>
@@ -86,11 +91,12 @@ function Ingredients({ setRecipes, recipes }) {
                                     ? prev.filter(item => item !== tool.name)
                                     : [...prev, tool.name]
                             )}
-                        /> {tool.name}
+                        />
+                        <label className="form-check-label">{tool.name}</label>
                     </div>
                 ))}
             </div>
-            <button onClick={handleFindRecipes}>Find Recipes</button>
+            <button className="btn btn-primary" onClick={handleFindRecipes}>Find Recipes</button>
             <RecipeResults recipes={recipes} />
         </div>
     );
