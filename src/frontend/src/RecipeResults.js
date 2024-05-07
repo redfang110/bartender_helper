@@ -1,6 +1,4 @@
-// src/components/RecipeResults.js
 import React from 'react';
-
 
 function RecipeResults({ recipes }) {
     return (
@@ -27,12 +25,16 @@ function RecipeResults({ recipes }) {
                         </ol>
                     </div>
                     <p><strong>Serving:</strong> {recipe.serving}</p>
+                    {
+                        <div>
+                            <h4>Image</h4>
+                            <img src={recipe.image} alt={recipe.name} style={{ maxWidth: '100%' }} />
+                        </div>
+                    }
                 </div>
             ))}
         </div>
     );
 }
-
-
 
 export default RecipeResults;

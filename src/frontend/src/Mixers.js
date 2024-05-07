@@ -1,9 +1,8 @@
-// src/Mixers.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Mixers() {
-    const [mixers, setMixers] = useState([]); // State to store the mixers data
+    const [mixers, setMixers] = useState([]);
 
     useEffect(() => {
         // Fetching data from the API
@@ -22,19 +21,29 @@ function Mixers() {
     return (
         <div>
             <h2>Mixers</h2>
-            {mixers.length > 0 ? (
-                <ul>
-                    {mixers.map(mixer => (
-                        <li key={mixer._id}>
-                            <strong>{mixer.name}</strong> ({mixer.type})
-                            <br />
-                            Flavor Profile: {mixer.flavor_profile}
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No mixers found.</p>
-            )}
+            <div className="row">
+                {mixers.length > 0 ? (
+                    mixers.map(mixer => (
+                        <div key={mixer._id} className="col-md-6 mb-4">
+                            <div className="card h-100">
+                                <img 
+                                    src={mixer.imageUrl} 
+                                    className="card-img-top" 
+                                    alt={mixer.name} 
+                                    style={{ objectFit: 'cover' }} 
+                                />
+                                <div className="card-body">
+                                    <h5 className="card-title">{mixer.name}</h5>
+                                    <p className="card-text"><strong>Type:</strong> {mixer.type}</p>
+                                    <p className="card-text"><strong>Flavor Profile:</strong> {mixer.flavorProfile}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <p>No mixers found.</p>
+                )}
+            </div>
         </div>
     );
 }

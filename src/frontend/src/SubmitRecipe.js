@@ -1,22 +1,27 @@
-// src/components/SubmitRecipe.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
 function SubmitRecipe() {
     const [recipeName, setRecipeName] = useState('');
     const [ingredients, setIngredients] = useState('');
-    const [description, setDescription] = useState('');
+    const [steps, setSteps] = useState('');
+    const [serving, setServing] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         await axios.post('/api/recipes', {
             name: recipeName,
             ingredients: ingredients.split(','),
-            description
+            steps: steps.split('\n'),
+            serving,
+            imageUrl
         });
         setRecipeName('');
         setIngredients('');
-        setDescription('');
+        setSteps('');
+        setServing('');
+        setImageUrl('');
         alert('Recipe submitted successfully!');
     };
 
@@ -37,9 +42,23 @@ function SubmitRecipe() {
                 required
             />
             <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Description"
+                value={steps}
+                onChange={(e) => setSteps(e.target.value)}
+                placeholder="Steps (one per line)"
+                required
+            />
+            <input
+                type="text"
+                value={serving}
+                onChange={(e) => setServing(e.target.value)}
+                placeholder="Serving"
+                required
+            />
+            <input
+                type="text"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                placeholder="Image URL"
                 required
             />
             <button type="submit">Submit Recipe</button>

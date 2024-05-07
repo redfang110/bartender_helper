@@ -5,6 +5,8 @@ import SubmitRecipe from './SubmitRecipe';
 import Spirits from './Spirits';
 import Mixers from './Mixers';
 import Tools from './Tools';
+import AboutView from './AboutView'; // Ensure this path is correct
+
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 
@@ -35,6 +37,9 @@ function App() {
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/tools">Tools</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/about">About</NavLink>
+                        </li>
                     </ul>
                 </nav>
                 <Routes>
@@ -44,6 +49,7 @@ function App() {
                     <Route path="/mixers" element={<Mixers />} />
                     <Route path="/tools" element={<Tools />} />
                     <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<AboutView />} />
                 </Routes>
             </div>
         </Router>
@@ -51,7 +57,20 @@ function App() {
 }
 
 function Home() {
-    return <div className="text-center"><h2>Welcome to the Bartender Helper App</h2></div>;
+    return (
+        <div className="text-center">
+            <h2>Welcome to the Bartender Helper App</h2>
+            <p>Bartender Helper is your go-to resource for creating delicious cocktails right at home.</p>
+            <p>With Bartender Helper, you can:</p>
+            <ul className="list-unstyled">
+                <li>- Explore a wide range of cocktail recipes.</li>
+                <li>- Find ingredients for your favorite cocktails.</li>
+                <li>- Submit your own recipes to share with the community.</li>
+                <li>- Learn about different spirits, mixers, and tools used in cocktail making.</li>
+            </ul>
+            <p>Get started by exploring the navigation menu above!</p>
+        </div>
+    );
 }
 
 export default App;

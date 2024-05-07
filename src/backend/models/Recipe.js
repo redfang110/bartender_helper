@@ -9,7 +9,8 @@ const recipeSchema = new mongoose.Schema({
         tools: [String]
     },
     steps: [String],
-    serving: String
+    serving: String,
+    image: { type: String, required: true } // URL of the image
 });
 
 module.exports = mongoose.model('Recipe', recipeSchema);

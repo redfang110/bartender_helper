@@ -20,7 +20,8 @@ router.post('/', async (req, res) => {
         createdBy: req.body.createdBy,
         ingredients: req.body.ingredients,
         steps: req.body.steps,
-        serving: req.body.serving
+        serving: req.body.serving,
+        imageUrl: req.body.imageUrl // Include the imageUrl field
     });
     try {
         const newRecipe = await recipe.save();
