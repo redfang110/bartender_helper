@@ -12,7 +12,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "i": "^0.3.7",
-    "mongoose": "^8.3.3"
+    "mongoose": "^8.3.4"
   },
   "description": ""
 }
