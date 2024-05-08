@@ -17,7 +17,11 @@ router.post('/', async (req, res) => {
     const recipe = new Recipe({
         name: req.body.name,
         createdBy: req.body.createdBy,
-        ingredients: req.body.ingredients,
+        ingredients: {
+            spirits: req.body.ingredients.spirits,
+            mixers: req.body.ingredients.mixers,
+            tools: req.body.ingredients.tools,
+        },
         steps: req.body.steps,
         serving: req.body.serving,
         imageUrl: req.body.imageUrl // Image URL included as part of the recipe
