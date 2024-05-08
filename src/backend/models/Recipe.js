@@ -3,14 +3,10 @@ const mongoose = require('mongoose');
 const recipeSchema = new mongoose.Schema({
     name: String,
     createdBy: String,
-    ingredients: {
-        spirits: [String],
-        mixers: [String],
-        tools: [String]
-    },
+    ingredients: [String], // Simplified if you just have a list of ingredients
     steps: [String],
     serving: String,
-    image: { type: String, required: true } // URL of the image
+    imageUrl: { type: String, required: true } // Ensure the field name matches your front-end and API
 });
 
 module.exports = mongoose.model('Recipe', recipeSchema);
