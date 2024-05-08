@@ -6,6 +6,7 @@ import Spirits from './Spirits';
 import Mixers from './Mixers';
 import Tools from './Tools';
 import AboutView from './AboutView'; // Ensure this path is correct
+import ShowRecipes from './ShowRecipes';
 
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
@@ -29,6 +30,9 @@ function App() {
                             <NavLink className="nav-link" activeClassName="active" to="/submit-recipe">Submit Recipe</NavLink>
                         </li>
                         <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/recipes">Recipes</NavLink>
+                        </li>
+                        <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/spirits">Spirits</NavLink>
                         </li>
                         <li className="nav-item">
@@ -50,6 +54,7 @@ function App() {
                     <Route path="/tools" element={<Tools />} />
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<AboutView />} />
+                    <Route path="/recipes" element={<ShowRecipes/>}/>
                 </Routes>
             </div>
         </Router>
