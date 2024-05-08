@@ -28,12 +28,31 @@ function Ingredients({ setRecipes, recipes }) {
 
     const handleFindRecipes = async () => {
         try {
-            const response = await axios.post('http://localhost:4000/api/recipes/find', {
-                spirits: selectedSpirits,
-                mixers: selectedMixers,
-                tools: selectedTools
-            });
-            setRecipes(response.data);
+            const response = await axios.get('http://localhost:4000/api/recipes/');
+            let filteredData = [];
+            for (let i = 0; i < response.data.length; i++) {
+                let j;
+                for (j = 0; j < selectedSpirits.length; j++) {
+                    let check = response.data[i].ingredients.spirits.includes(selectedSpirits[j]) && !filteredData.includes(response.data[i]);
+                    // console.log("Recipe: " + response.data[i].name + " : " + response.data[i].ingredients.spirits + "\nSpirit: " + selectedSpirits[j] + "\nCheck: " + check);
+                    if (check) {
+                        // console.log("push " + response.data[i].name + " with " + selectedSpirits[j]);
+                        filteredData.push(response.data[i]);
+                        break;
+                    }
+                }
+                for (j = 0; j < selectedMixers.length; j++) {
+                    let check = response.data[i].ingredients.mixers.includes(selectedMixers[j]) && !filteredData.includes(response.data[i]);
+                    // console.log("Recipe: " + response.data[i].name + " : " + response.data[i].ingredients.mixers + "\nMixer: " + selectedMixers[j] + "\nCheck: " + check);
+                    if (check) {
+                        // console.log("push " + response.data[i].name + " with " + selectedMixers[j]);
+                        filteredData.push(response.data[i]);
+                        break;
+                    }
+                }
+            }
+            setRecipes(filteredData);
+            // console.log(filteredData);
         } catch (error) {
             console.error('Failed to find recipes:', error);
         }
