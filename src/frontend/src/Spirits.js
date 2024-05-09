@@ -3,18 +3,18 @@ import axios from 'axios';
 
 function Spirits({ userId }) {
     const [spirits, setSpirits] = useState([]);
-    const [filteredSpirits, setFilteredSpirits] = useState([]);
     const [showSpirits, setShowSpirits] = useState([]);
     const [userSpirits, setUserSpirits] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [showOnlyOwned, setShowOnlyOwned] = useState(false); // State to control the visibility of only owned spirits
 
     useEffect(() => {
         async function fetchSpirits() {
             try {
-                const response = await axios.get('http://localhost:4000/api/spirits'); // Adjust the URL as needed
+                const response = await axios.get('http://localhost:4000/api/spirits');
                 setSpirits(response.data);
 
-                const user = await axios.get('http://localhost:4000/api/users/' + userId);
+                const user = await axios.get(`http://localhost:4000/api/users/${userId}`);
                 setUserSpirits(user.data.spirits);
             } catch (error) {
                 console.error('Failed to fetch spirits:', error);
@@ -22,71 +22,50 @@ function Spirits({ userId }) {
         }
 
         fetchSpirits();
-    }, []);
+    }, [userId]);
+
+    useEffect(() => {
+        const filtered = showOnlyOwned
+            ? spirits.filter(spirit => userSpirits.includes(spirit.name))
+            : spirits;
+        setShowSpirits(filtered);
+    }, [spirits, userSpirits, showOnlyOwned]);
 
     const handleAddRemoveSpirit = async (spiritName) => {
         if (!userSpirits.includes(spiritName)) {
             try {
-                const addSpirit = {
-                    userId: userId,
-                    spirit: spiritName
-                }
-                await axios.post('http://localhost:4000/api/users/add-spirit', addSpirit);
-
-                const user = await axios.get('http://localhost:4000/api/users/' + userId);
-                setUserSpirits(user.data.spirits);
+                await axios.post('http://localhost:4000/api/users/add-spirit', { userId, spirit: spiritName });
             } catch (error) {
                 console.error('Failed to add spirit:', error);
             }
         } else {
             try {
-                const removeSpirit = {
-                    userId: userId,
-                    spirit: spiritName
-                }
-                await axios.post('http://localhost:4000/api/users/remove-spirit', removeSpirit);
-
-                const user = await axios.get('http://localhost:4000/api/users/' + userId);
-                setUserSpirits(user.data.spirits);
+                await axios.post('http://localhost:4000/api/users/remove-spirit', { userId, spirit: spiritName });
             } catch (error) {
-                console.error('Failed to add spirit:', error);
+                console.error('Failed to remove spirit:', error);
             }
         }
-    }
-
-    const updateSearch = () => {
-        if (searchTerm != '') {
-            let newFilteredSpirits = [];
-            spirits.forEach(function(spirit) {
-                if (spirit.name && spirit.name.toLowerCase().includes(searchTerm.toLowerCase()) && !newFilteredSpirits.includes(spirit)) {
-                    newFilteredSpirits.push(spirit);
-                }
-                if (spirit.description && spirit.description.toLowerCase().includes(searchTerm.toLowerCase()) && !newFilteredSpirits.includes(spirit)) {
-                    newFilteredSpirits.push(spirit);
-                }
-                if (spirit.flavor_profile && spirit.flavor_profile.toLowerCase().includes(searchTerm.toLowerCase()) && !newFilteredSpirits.includes(spirit)) {
-                    newFilteredSpirits.push(spirit);
-                }
-            });
-            setFilteredSpirits(newFilteredSpirits);
-            setShowSpirits(newFilteredSpirits);
-        }
-    }
-
-    useEffect(() => {
-        updateSearch();
-    }, [searchTerm]);
-
-    useEffect(() => {
-        if (searchTerm == '') {
-            setShowSpirits(spirits);
-        }
-    });
+        const user = await axios.get(`http://localhost:4000/api/users/${userId}`);
+        setUserSpirits(user.data.spirits);
+    };
 
     return (
         <div>
             <div style={{ textAlign: 'center' }}>
-                <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} style={{ width: '600px', borderRadius: 20, paddingLeft: 10, margin: 10 }} /> <br />
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    style={{ width: '600px', borderRadius: 20, paddingLeft: 10, margin: 10 }}
+                />
+                <br />
+                <button
+                    onClick={() => setShowOnlyOwned(!showOnlyOwned)}
+                    style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: showOnlyOwned ? "gray" : "blue", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}
+                >
+                    {showOnlyOwned ? 'Show All Spirits' : 'Show Only Owned Spirits'}
+                </button>
             </div>
             <h2 className="mb-4">Spirits</h2>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -94,8 +73,8 @@ function Spirits({ userId }) {
                     showSpirits.map(spirit => (
                         <div key={spirit._id} className="col">
                             <div className="card">
-                                <div className="image-container" style={{maxHeight: 400, maxWidth: 350, textAlign: "center"}}>
-                                    <img src={spirit.imageUrl} className="card-img-top" alt={spirit.name} style={{objectFit: "contain", maxHeight: 250, maxWidth: 250, height: "auto", width: "auto"}}/>
+                                <div className="image-container" style={{ maxHeight: 400, maxWidth: 350, textAlign: "center" }}>
+                                    <img src={spirit.imageUrl} className="card-img-top" alt={spirit.name} style={{ objectFit: "contain", maxHeight: 250, maxWidth: 250, height: "auto", width: "auto" }}/>
                                 </div>
                                 <div className="card-body">
                                     <h5 className="card-title">{spirit.name}</h5>
