@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function ShowRecipes({ userId }) {
+function returnRecipes({ userId }) {
     const [recipes, setRecipes] = useState([]);
-    const [showRecipes, setShowRecipes] = useState([]);
+    const [returnRecipes, setReturnRecipes] = useState([]);
+    const [filteredRecipes, setFilteredRecipes] = useState([]);
     const [userRecipes, setUserRecipes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+
+    const [onlyFav, setOnlyFav] = useState(false);
+    const [onlyOwnedSpirits, setOnlyOwnedSpirits] = useState(false);
+    const [onlyOwnedMixers, setOnlyOwnedMixers] = useState(false);
+
+    const [userFav, setUserFav] = useState([]);
+    const [userOwnedSpirits, setUserOwnedSpirits] = useState([]);
+    const [userOwnedMixers, setUserOwnedMixers] = useState([]);
+
+    const [showNone, setShowNone] = useState([]);
 
     const updateSearch = () => {
         if (searchTerm != '') {
@@ -32,10 +43,10 @@ function ShowRecipes({ userId }) {
             });
             setReturnRecipes(newFilteredRecipes);
             if (newFilteredRecipes.length < 1) {
-                setShowNone(true);
+                setReturnNone(true);
                 setReturnRecipes([]);
             } else {
-                setShowNone(false);
+                setReturnNone(false);
             }
         } else {
             if (filteredRecipes.length < 1) {
@@ -51,13 +62,11 @@ function ShowRecipes({ userId }) {
             setFilteredRecipes([]);
             if (searchTerm == '') {
                 setShowNone(false);
-            } else {
-                setFilteredRecipes([]);
             }
             return;
         }
         let newFilteredRecipes = [];
-        let recipesToCheck = filteredRecipes.length > 0 ? filteredRecipes : recipes;
+        let recipesToCheck = recipes;
         if (onlyFav) {
             recipesToCheck.forEach(function(recipe) {
                 if (userFav.includes(recipe.name) && !newFilteredRecipes.includes(recipe)) {
@@ -128,7 +137,9 @@ function ShowRecipes({ userId }) {
                 setRecipes(response.data);
 
                 const user = await axios.get(`http://localhost:4000/api/users/${userId}`);
-                setUserRecipes(user.data.recipes);
+                setUserFav(user.data.recipes);
+                setUserOwnedSpirits(user.data.spirits);
+                setUserOwnedMixers(user.data.mixers);
             } catch (error) {
                 console.error('Failed to fetch recipes:', error);
             }
@@ -138,11 +149,10 @@ function ShowRecipes({ userId }) {
     }, [userId]);
 
     useEffect(() => {
-        const filtered = showOnlyOwned
-            ? recipes.filter(recipe => userRecipes.includes(recipe._id))
-            : recipes;
-        setShowRecipes(filtered);
-    }, [recipes, userRecipes, showOnlyOwned]);
+        if () {
+            
+        }
+    });
 
     const handleAddRemoveRecipe = async (recipeId) => {
         const isOwned = userRecipes.includes(recipeId);
@@ -171,16 +181,28 @@ function ShowRecipes({ userId }) {
                 />
                 <br />
                 <button
-                    onClick={() => setShowOnlyOwned(!showOnlyOwned)}
-                    style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: showOnlyOwned ? "gray" : "blue", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}
+                    onClick={() => setOnlyOwnedSpirits(!onlyOwnedSpirits)}
+                    style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: onlyOwnedSpirits ? "gray" : "blue", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}
                 >
-                    {showOnlyOwned ? 'Show All Recipes' : 'Show Only Owned Recipes'}
+                    Owned Spirits
+                </button>
+                <button
+                    onClick={() => setOnlyOwnedMixers(!onlyOwnedMixers)}
+                    style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: onlyOwnedMixers ? "gray" : "blue", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}
+                >
+                    Owned Mixers
+                </button>
+                <button
+                    onClick={() => setOnlyFav(!onlyFav)}
+                    style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: onlyFav ? "gray" : "blue", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}
+                >
+                    Favorites
                 </button>
             </div>
             <h2 className="mb-4">Recipes</h2>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                {showRecipes.length > 0 ? (
-                    showRecipes.map(recipe => (
+                {returnRecipes.length > 0 ? (
+                    returnRecipes.map(recipe => (
                         <div key={recipe._id} className="col">
                             <div className="card">
                                 <div className="image-container" style={{ maxHeight: 400, maxWidth: 350, textAlign: "center" }}>
@@ -193,7 +215,7 @@ function ShowRecipes({ userId }) {
                                         onClick={() => handleAddRemoveRecipe(recipe._id)}
                                         style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: !userRecipes.includes(recipe._id) ? "blue" : "gray", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}
                                     >
-                                        Mark Owned
+                                        Mark Favorite
                                     </button>
                                 </div>
                             </div>
@@ -207,4 +229,4 @@ function ShowRecipes({ userId }) {
     );
 }
 
-export default ShowRecipes;
+export default returnRecipes;

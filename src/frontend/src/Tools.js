@@ -108,7 +108,6 @@ function Tools({ userId }) {
                     ))
                 ) : (
                     <p>No tools found.</p>
-                    <p>No tools found.</p>
                 )}
             </div>
         </div>
