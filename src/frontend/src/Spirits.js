@@ -5,7 +5,6 @@ function Spirits() {
     const [spirits, setSpirits] = useState([]);
 
     useEffect(() => {
-        // Fetching data from the API
         async function fetchSpirits() {
             try {
                 const response = await axios.get('http://localhost:4000/api/spirits'); // Adjust the URL as needed
@@ -19,15 +18,31 @@ function Spirits() {
     }, []);
 
     return (
-        <div>
-            <h2 className="mb-4">Spirits</h2>
+        <div className="container mt-5">
+            <h2 className="text-center mb-4">Spirits</h2>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {spirits.length > 0 ? (
                     spirits.map(spirit => (
                         <div key={spirit._id} className="col">
-                            <div className="card">
-                                <div className="image-container" style={{ maxHeight: '1000px', overflow: 'hidden' }}>
-                                    <img src={spirit.imageUrl} className="card-img-top" alt={spirit.name} style={{ width: '100%', objectFit: 'cover' }} />
+                            <div className="card h-100">
+                                <div style={{
+                                    height: '250px', // Set the height of the image container
+                                    overflow: 'hidden',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginTop: '20px'  // Adding top margin similar to Mixers component
+                                }}>
+                                    <img 
+                                        src={spirit.imageUrl} 
+                                        alt={spirit.name} 
+                                        style={{ 
+                                            width: '100%', 
+                                            height: '100%', 
+                                            objectFit: 'contain', 
+                                            objectPosition: 'center' 
+                                        }} 
+                                    />
                                 </div>
                                 <div className="card-body">
                                     <h5 className="card-title">{spirit.name}</h5>

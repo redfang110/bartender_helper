@@ -18,16 +18,34 @@ function ShowRecipes() {
     }, []);
 
     return (
-        <div className="container">
-            <h2 className="my-4">Recipes</h2>
+        <div className="container mt-5">
+            <h2 className="text-center mb-4">Recipes</h2>
             <div className="row">
                 {recipes.length > 0 ? (
                     recipes.map(recipe => (
-                        <div className="col-md-4 mb-4" key={recipe._id}>
-                            <div className="card">
-                                {recipe.imageUrl && (
-                                    <img src={recipe.imageUrl} alt={recipe.name} className="card-img-top" style={{ height: '200px', objectFit: 'cover' }} />
-                                )}
+                        <div className="col-md-6 mb-4" key={recipe._id}> {/* Increased width from col-md-4 to col-md-6 */}
+                            <div className="card h-100">
+                                <div style={{
+                                    height: '300px', // Increased height for bigger images
+                                    overflow: 'hidden',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginTop: '20px'
+                                }}>
+                                    {recipe.imageUrl && (
+                                        <img 
+                                            src={recipe.imageUrl} 
+                                            alt={recipe.name} 
+                                            style={{
+                                                width: '100%',  // Maintains full width
+                                                height: '100%', // Ensures the height is fully used
+                                                objectFit: 'contain', // Makes sure the entire image fits within the bounds without cropping
+                                                objectPosition: 'center' // Center the image within the container
+                                            }} 
+                                        />
+                                    )}
+                                </div>
                                 <div className="card-body">
                                     <h5 className="card-title">{recipe.name}</h5>
                                     <p className="card-text">{recipe.steps.join('\n')}</p>
@@ -37,7 +55,9 @@ function ShowRecipes() {
                         </div>
                     ))
                 ) : (
-                    <p>No recipes found.</p>
+                    <div className="alert alert-warning" role="alert">
+                        No recipes found.
+                    </div>
                 )}
             </div>
         </div>
