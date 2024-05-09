@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
     spirits: [String],  
     mixers: [String],
     tools: [String],
-    recipes: [String]
+    recipes: [String],
+    userRecipes: [String]
 });
 
 module.exports = mongoose.model('User', userSchema);

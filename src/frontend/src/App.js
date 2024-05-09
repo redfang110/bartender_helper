@@ -8,6 +8,7 @@ import Tools from './Tools';
 import AboutView from './AboutView'; // Ensure this path is correct
 import ShowRecipes from './ShowRecipes';
 import Login from './Login';
+import Account from './Account';
 
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
@@ -48,6 +49,9 @@ function LoggedIn({ id }) {
                             <NavLink className="nav-link" activeClassName="active" to="/" exact>Home</NavLink>
                         </li>
                         <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/account" exact>Account</NavLink>
+                        </li>
+                        <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/recipes">Recipes</NavLink>
                         </li>
                         <li className="nav-item">
@@ -59,9 +63,9 @@ function LoggedIn({ id }) {
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/tools">Tools</NavLink>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/ingredients">Ingredients</NavLink>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/submit-recipe">Submit Recipe</NavLink>
                         </li>
@@ -71,14 +75,15 @@ function LoggedIn({ id }) {
                     </ul>
                 </nav>
                 <Routes>
-                    <Route path="/ingredients" element={<Ingredients setRecipes={setRecipes} recipes={recipes} />} />
+                    {/* <Route path="/ingredients" element={<Ingredients setRecipes={setRecipes} recipes={recipes} />} /> */}
                     <Route path="/submit-recipe" element={<SubmitRecipe />} />
                     <Route path="/spirits" element={<Spirits userId={id}/>} />
                     <Route path="/mixers" element={<Mixers userId={id}/>} />
-                    <Route path="/tools" element={<Tools />} />
+                    <Route path="/tools" element={<Tools userId={id}/>} />
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<AboutView />} />
                     <Route path="/recipes" element={<ShowRecipes userId={id}/>}/>
+                    <Route path="/account" element={<Account userId={id}/>}/>
                 </Routes>
             </div>
         </Router>

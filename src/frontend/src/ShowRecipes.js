@@ -70,14 +70,14 @@ function ShowRecipes({ userId }) {
         let recipesToCheck = filteredRecipes.length > 0 ? filteredRecipes : recipes;
         if (onlyFav) {
             recipesToCheck.forEach(function(recipe) {
-                if (recipe.name && userFav.includes(recipe.name) && !newFilteredRecipes.includes(recipe)) {
+                if (userFav.includes(recipe.name) && !newFilteredRecipes.includes(recipe)) {
                     newFilteredRecipes.push(recipe);
                 }
             });
         }
         if (onlyOwnedSpirits) {
             recipesToCheck.forEach(function(recipe) {
-                if (recipe.spirit) {
+                if (recipe.spirits) {
                     recipe.spirits.forEach(function(spirit) {
                         if (userOwnedSpirits.includes(spirit.name) && !newFilteredRecipes.includes(recipe)) {
                             newFilteredRecipes.push(recipe);
@@ -88,7 +88,7 @@ function ShowRecipes({ userId }) {
         }
         if (onlyOwnedMixers) {
             recipesToCheck.forEach(function(recipe) {
-                if (recipe.mixer) {
+                if (recipe.mixers) {
                     recipe.mixers.forEach(function(mixer) {
                         if (userOwnedMixers.includes(mixer.name) && !newFilteredRecipes.includes(recipe)) {
                             newFilteredRecipes.push(recipe);
@@ -98,6 +98,11 @@ function ShowRecipes({ userId }) {
             });
         }
         setFilteredRecipes(newFilteredRecipes);
+        console.log(newFilteredRecipes);
+        console.log(newFilteredRecipes);
+        console.log(userOwnedMixers);
+        console.log(userOwnedSpirits);
+        console.log(userFav);
         if (newFilteredRecipes.length < 1) {
             setShowNone(true);
             setReturnRecipes([]);
