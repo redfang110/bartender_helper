@@ -23,22 +23,14 @@ function Mixers() {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {mixers.length > 0 ? (
                     mixers.map(mixer => (
-                        <div key={mixer._id} className="col">
-                            <div className="card h-100">
-                                <div style={{
-                                    height: '250px',
-                                    overflow: 'hidden',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    marginTop: '20px'  // Adding top margin
-                                }}>
-                                    <img 
-                                        src={mixer.imageUrl} 
-                                        alt={mixer.name} 
-                                        style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
-                                    />
-                                </div>
+                        <div key={mixer._id} className="col-md-6 mb-4">
+                            <div className="card h-100" style={{objectFit: "contain", maxHeight: 400, maxWidth: 350}}>
+                                <img 
+                                    src={mixer.imageUrl} 
+                                    className="card-img-top" 
+                                    alt={mixer.name} 
+                                    style={{objectFit: "contain", maxHeight: 250, maxWidth: 250, height: "auto", width: "auto"}}
+                                />
                                 <div className="card-body">
                                     <h5 className="card-title">{mixer.name}</h5>
                                     <p className="card-text"><strong>Type:</strong> {mixer.type}</p>

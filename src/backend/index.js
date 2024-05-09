@@ -26,6 +26,7 @@ const recipeRoutes = require('./routes/recipes');
 const spiritRoutes = require('./routes/spirits');
 const mixerRoutes = require('./routes/mixers');
 const toolRoutes = require('./routes/tools');
+const userRoutes = require('./routes/users');
 
 // Use routes
 //app.use('/api/users', userRoutes);
@@ -33,6 +34,7 @@ app.use('/api/recipes', recipeRoutes);
 app.use('/api/spirits', spiritRoutes);
 app.use('/api/mixers', mixerRoutes);
 app.use('/api/tools', toolRoutes);
+app.use('/api/users', userRoutes);
 
 // Error handling for unavailable routes
 app.use((req, res, next) => {

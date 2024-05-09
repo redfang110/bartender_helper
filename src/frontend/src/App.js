@@ -7,11 +7,14 @@ import Mixers from './Mixers';
 import Tools from './Tools';
 import AboutView from './AboutView'; // Ensure this path is correct
 import ShowRecipes from './ShowRecipes';
+import Login from './Login';
 
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 
 function App() {
+    const [userId, setUserId] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
     const [recipes, setRecipes] = useState([]);
     const headerStyle = {
         backgroundColor: 'blue', // Set the background color to black
@@ -20,6 +23,21 @@ function App() {
         marginBottom: '20px' // Add margin below the header
     };
 
+    const handleIdChange = (id) => {
+        setUserId(id);
+    }
+
+    const handleLogIn = () => {
+        setLoggedIn(true);
+    }
+ 
+    return (
+        loggedIn ? <LoggedIn id={userId}/> : <Login userIdVal={handleIdChange} loggedIn={handleLogIn}/>
+    );
+}
+
+function LoggedIn({ id }) {
+    const [recipes, setRecipes] = useState([]);
     return (
         <Router>
             <div className="container mt-5">
@@ -28,12 +46,6 @@ function App() {
                     <ul className="nav nav-pills justify-content-center">
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/" exact>Home</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active" to="/ingredients">Ingredients</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active" to="/submit-recipe">Submit Recipe</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/recipes">Recipes</NavLink>
@@ -48,6 +60,12 @@ function App() {
                             <NavLink className="nav-link" activeClassName="active" to="/tools">Tools</NavLink>
                         </li>
                         <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/ingredients">Ingredients</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/submit-recipe">Submit Recipe</NavLink>
+                        </li>
+                        <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/about">About</NavLink>
                         </li>
                     </ul>
@@ -55,12 +73,12 @@ function App() {
                 <Routes>
                     <Route path="/ingredients" element={<Ingredients setRecipes={setRecipes} recipes={recipes} />} />
                     <Route path="/submit-recipe" element={<SubmitRecipe />} />
-                    <Route path="/spirits" element={<Spirits />} />
-                    <Route path="/mixers" element={<Mixers />} />
+                    <Route path="/spirits" element={<Spirits userId={id}/>} />
+                    <Route path="/mixers" element={<Mixers userId={id}/>} />
                     <Route path="/tools" element={<Tools />} />
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<AboutView />} />
-                    <Route path="/recipes" element={<ShowRecipes/>}/>
+                    <Route path="/recipes" element={<ShowRecipes userId={id}/>}/>
                 </Routes>
             </div>
         </Router>
