@@ -6,7 +6,120 @@ function ShowRecipes({ userId }) {
     const [showRecipes, setShowRecipes] = useState([]);
     const [userRecipes, setUserRecipes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [showOnlyOwned, setShowOnlyOwned] = useState(false);
+
+    const updateSearch = () => {
+        if (searchTerm != '') {
+            let newFilteredRecipes = [];
+            let recipesToCheck = filteredRecipes.length > 0 ? filteredRecipes : recipes;
+            recipesToCheck.forEach(function(recipe) {
+                if (recipe.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    newFilteredRecipes.push(recipe);
+                }
+                if (recipe.spirits) {
+                    recipe.spirits.forEach(function(spirit) {
+                        if (spirit.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                            newFilteredRecipes.push(recipe);
+                        }
+                    });
+                }
+                if (recipe.mixers) {
+                    recipe.mixers.forEach(function(mixer) {
+                        if (mixer.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                            newFilteredRecipes.push(recipe);
+                        }
+                    });
+                }
+            });
+            setReturnRecipes(newFilteredRecipes);
+            if (newFilteredRecipes.length < 1) {
+                setShowNone(true);
+                setReturnRecipes([]);
+            } else {
+                setShowNone(false);
+            }
+        } else {
+            if (filteredRecipes.length < 1) {
+                setReturnRecipes(recipes);
+            } else {
+                setReturnRecipes(filteredRecipes);
+            }
+        }
+    }
+
+    const updateFilteredRecipes = () => {
+        if (!onlyFav && !onlyOwnedSpirits && !onlyOwnedMixers) {
+            setFilteredRecipes([]);
+            if (searchTerm == '') {
+                setShowNone(false);
+            } else {
+                setFilteredRecipes([]);
+            }
+            return;
+        }
+        let newFilteredRecipes = [];
+        let recipesToCheck = filteredRecipes.length > 0 ? filteredRecipes : recipes;
+        if (onlyFav) {
+            recipesToCheck.forEach(function(recipe) {
+                if (userFav.includes(recipe.name) && !newFilteredRecipes.includes(recipe)) {
+                    newFilteredRecipes.push(recipe);
+                }
+            });
+        }
+        if (onlyOwnedSpirits) {
+            recipesToCheck.forEach(function(recipe) {
+                if (recipe.spirits) {
+                    recipe.spirits.forEach(function(spirit) {
+                        if (userOwnedSpirits.includes(spirit.name) && !newFilteredRecipes.includes(recipe)) {
+                            newFilteredRecipes.push(recipe);
+                        }
+                    });
+                }
+            });
+        }
+        if (onlyOwnedMixers) {
+            recipesToCheck.forEach(function(recipe) {
+                if (recipe.mixers) {
+                    recipe.mixers.forEach(function(mixer) {
+                        if (userOwnedMixers.includes(mixer.name) && !newFilteredRecipes.includes(recipe)) {
+                            newFilteredRecipes.push(recipe);
+                        }
+                    });
+                }
+            });
+        }
+        setFilteredRecipes(newFilteredRecipes);
+        console.log(newFilteredRecipes);
+        console.log(newFilteredRecipes);
+        console.log(userOwnedMixers);
+        console.log(userOwnedSpirits);
+        console.log(userFav);
+        if (newFilteredRecipes.length < 1) {
+            setShowNone(true);
+            setReturnRecipes([]);
+        } else {
+            setShowNone(false);
+        }
+    }
+
+    const handleOnlyOwnedSpirits = () => {
+        setOnlyOwnedSpirits(!onlyOwnedSpirits);
+    }
+
+    const handleOnlyOwnedMixers = () => {
+        setOnlyOwnedMixers(!onlyOwnedMixers);
+    }
+
+    const handleOnlyFav = () => {
+        setOnlyFav(!onlyFav);
+    }
+
+    useEffect(() => {
+        updateSearch();
+    }, [searchTerm]);
+
+    useEffect(() => {
+        updateFilteredRecipes();
+    }, [onlyOwnedSpirits, onlyOwnedMixers, onlyFav]);
 
     useEffect(() => {
         async function fetchRecipes() {

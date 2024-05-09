@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function SubmitRecipe() {
+function SubmitRecipe({ userId }) {
     const [recipeName, setRecipeName] = useState('');
     const [createdBy, setCreatedBy] = useState('');
     const [spirits, setSpirits] = useState('');
@@ -28,6 +28,12 @@ function SubmitRecipe() {
 
         try {
             const response = await axios.post('http://localhost:4000/api/recipes', formattedData);
+
+            const addRecipeToUser = {
+                userId: userId,
+                recipe: response.data.name
+            }
+            await axios.post('http://localhost:4000/api/users/add-user-recipe', addRecipeToUser);
             alert('Recipe submitted successfully!');
             // Reset fields
             setRecipeName('');

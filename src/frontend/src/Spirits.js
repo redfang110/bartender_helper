@@ -80,12 +80,7 @@ function Spirits({ userId }) {
                                     <h5 className="card-title">{spirit.name}</h5>
                                     <p className="card-text"><strong>Type:</strong> {spirit.type}</p>
                                     <p className="card-text"><strong>Flavor Profile:</strong> {spirit.flavor_profile}</p>
-                                    <button
-                                        onClick={() => handleAddRemoveSpirit(spirit.name)}
-                                        style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: !userSpirits.includes(spirit.name) ? "blue" : "gray", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}
-                                    >
-                                        Mark Owned
-                                    </button>
+                                    <button onClick={() => handleAddRemoveSpirit(spirit.name)} style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: !userSpirits.includes(spirit.name) ? "blue" : "gray", color: "white"}}>Mark Owned</button>
                                 </div>
                             </div>
                         </div>

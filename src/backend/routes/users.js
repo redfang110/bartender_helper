@@ -44,7 +44,8 @@ router.post('/register', async (req, res) => {
             spirits: [],  
             mixers: [],
             tools: [],
-            recipes: []
+            recipes: [],
+            userRecipes: []
         });
 
         await user.save();
@@ -72,6 +73,32 @@ router.post('/login', async (req, res) => {
             res.status(200).json(user);
         } else {
             return res.status(401).send('Invalid username or password');
+        }
+    } catch (error) {
+        res.status(500).send('Error logging in');
+    }
+});
+
+router.post('/change-password', async (req, res) => {
+    try {
+        const user = await User.findById(req.body.userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const hashedPasswordFromDB = user.password;
+
+        // Compare hashed password from DB with provided password
+        const match = await bcrypt.compare(req.body.oldPassword, hashedPasswordFromDB);
+
+        if (match) {
+            const hashedPassword = await bcrypt.hash(req.body.newPassword, 10); // 10 is the saltRounds
+            user.password = hashedPassword;
+            await user.save();
+            res.status(200).json(user);
+        } else {
+            return res.status(401).send('Passwords do not match');
         }
     } catch (error) {
         res.status(500).send('Error logging in');
@@ -214,6 +241,42 @@ router.post('/remove-recipe', async (req, res) => {
         }
 
         user.recipes = user.recipes.filter(recipe => recipe !== req.body.recipe);
+        const updatedUser = await user.save();
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+// Add recipe to user
+router.post('/add-user-recipe', async (req, res) => {
+    try {
+        const user = await User.findById(req.body.userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        user.userRecipes.push(req.body.recipe);
+        const updatedUser = await user.save();
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+// Remove recipe to user
+router.post('/remove-user-recipe', async (req, res) => {
+    try {
+        const user = await User.findById(req.body.userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        user.recipes = user.userRecipes.filter(recipe => recipe !== req.body.recipe);
         const updatedUser = await user.save();
 
         res.status(200).json(updatedUser);
