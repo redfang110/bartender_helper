@@ -58,61 +58,77 @@ function SubmitRecipe() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Submit a New Recipe</h2>
+        <form onSubmit={handleSubmit} 
+          style={{
+          textAlign: "center",
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "80vh",
+        }}>
+            <h2>Submit a New Recipe</h2> <br/>
             <input
                 type="text"
                 value={recipeName}
                 onChange={(e) => setRecipeName(e.target.value)}
+                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
                 placeholder="Recipe Name"
                 required
-            />
+            /> <br/>
             <input
                 type="text"
                 value={createdBy}
                 onChange={(e) => setCreatedBy(e.target.value)}
+                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
                 placeholder="Created By"
                 required
-            />
+            /> <br/>
             <textarea
                 value={spirits}
                 onChange={(e) => setSpirits(e.target.value)}
+                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
                 placeholder="Spirits (comma-separated)"
                 required
-            />
+            /> <br/>
             <textarea
                 value={mixers}
                 onChange={(e) => setMixers(e.target.value)}
+                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
                 placeholder="Mixers (comma-separated)"
                 required
-            />
+            /> <br/> 
             <textarea
                 value={tools}
                 onChange={(e) => setTools(e.target.value)}
+                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
                 placeholder="Tools (comma-separated)"
                 required
-            />
+            /> <br/> 
             <textarea
                 value={steps}
                 onChange={(e) => setSteps(e.target.value)}
+                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
                 placeholder="Steps (one per line)"
                 required
-            />
+            /> <br/> 
             <input
                 type="text"
                 value={serving}
                 onChange={(e) => setServing(e.target.value)}
+                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
                 placeholder="Serving"
                 required
-            />
+            /> <br/> 
             <input
                 type="text"
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
+                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
                 placeholder="Image URL"
                 required
-            />
-            <button type="submit">Submit Recipe</button>
+            /> <br/> 
+            <button type="submit" style={{width: "200px",fontWeight: "bold", borderRadius: 20, backgroundColor: "blue", color: "white"}}>Submit Recipe</button>
         </form>
     );
 }
