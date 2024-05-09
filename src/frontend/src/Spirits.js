@@ -26,8 +26,8 @@ function Spirits() {
                     spirits.map(spirit => (
                         <div key={spirit._id} className="col">
                             <div className="card">
-                                <div className="image-container" style={{ maxHeight: '1000px', overflow: 'hidden' }}>
-                                    <img src={spirit.imageUrl} className="card-img-top" alt={spirit.name} style={{ width: '100%', objectFit: 'cover' }} />
+                                <div className="image-container" style={{objectFit: "contain", maxHeight: 400, maxWidth: 350}}>
+                                    <img src={spirit.imageUrl} className="card-img-top" alt={spirit.name} style={{objectFit: "contain", maxHeight: 250, maxWidth: 250, height: "auto", width: "auto"}}/>
                                 </div>
                                 <div className="card-body">
                                     <h5 className="card-title">{spirit.name}</h5>

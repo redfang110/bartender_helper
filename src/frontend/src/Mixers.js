@@ -25,12 +25,12 @@ function Mixers() {
                 {mixers.length > 0 ? (
                     mixers.map(mixer => (
                         <div key={mixer._id} className="col-md-6 mb-4">
-                            <div className="card h-100">
+                            <div className="card h-100" style={{objectFit: "contain", maxHeight: 400, maxWidth: 350}}>
                                 <img 
                                     src={mixer.imageUrl} 
                                     className="card-img-top" 
                                     alt={mixer.name} 
-                                    style={{ objectFit: 'cover' }} 
+                                    style={{objectFit: "contain", maxHeight: 250, maxWidth: 250, height: "auto", width: "auto"}}
                                 />
                                 <div className="card-body">
                                     <h5 className="card-title">{mixer.name}</h5>
