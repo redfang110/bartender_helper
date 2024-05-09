@@ -9,7 +9,6 @@ function Spirits({ userId }) {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        // Fetching data from the API
         async function fetchSpirits() {
             try {
                 const response = await axios.get('http://localhost:4000/api/spirits'); // Adjust the URL as needed

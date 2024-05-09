@@ -15,6 +15,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is import
 function App() {
     const [userId, setUserId] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+    const [recipes, setRecipes] = useState([]);
+    const headerStyle = {
+        backgroundColor: 'blue', // Set the background color to black
+        color: 'white', // Set the font color to white
+        padding: '10px 0', // Add some padding to increase the size of the header area
+        marginBottom: '20px' // Add margin below the header
+    };
 
     const handleIdChange = (id) => {
         setUserId(id);
@@ -34,7 +41,7 @@ function LoggedIn({ id }) {
     return (
         <Router>
             <div className="container mt-5">
-                <h1 className="text-center mb-4">Bartender Helper</h1>
+            <h1 className="text-center bg-primary text-white py-2 mb-4">Bartender Helper</h1>
                 <nav className="mb-3">
                     <ul className="nav nav-pills justify-content-center">
                         <li className="nav-item">
@@ -80,17 +87,21 @@ function LoggedIn({ id }) {
 
 function Home() {
     return (
-        <div className="text-center">
+        <div className="container text-center">
             <h2>Welcome to the Bartender Helper App</h2>
-            <p>Bartender Helper is your go-to resource for creating delicious cocktails right at home.</p>
-            <p>With Bartender Helper, you can:</p>
-            <ul className="list-unstyled">
-                <li>- Explore a wide range of cocktail recipes.</li>
-                <li>- Find ingredients for your favorite cocktails.</li>
-                <li>- Submit your own recipes to share with the community.</li>
-                <li>- Learn about different spirits, mixers, and tools used in cocktail making.</li>
-            </ul>
-            <p>Get started by exploring the navigation menu above!</p>
+            <div className="card">
+                <div className="card-body">
+                    <p>Bartender Helper is your go-to resource for creating delicious cocktails right at home.</p>
+                    <p>With Bartender Helper, you can:</p>
+                    <ul className="list-unstyled">
+                        <li>- Explore a wide range of cocktail recipes.</li>
+                        <li>- Find ingredients for your favorite cocktails.</li>
+                        <li>- Submit your own recipes to share with the community.</li>
+                        <li>- Learn about different spirits, mixers, and tools used in cocktail making.</li>
+                    </ul>
+                    <p>Get started by exploring the navigation menu above!</p>
+                </div>
+            </div>
         </div>
     );
 }

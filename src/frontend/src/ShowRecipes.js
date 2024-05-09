@@ -180,7 +180,9 @@ function ShowRecipes({ userId }) {
                         </div>
                     ))
                 ) : (
-                    <p>No recipes found.</p>
+                    <div className="alert alert-warning" role="alert">
+                        No recipes found.
+                    </div>
                 )}
             </div>
         </div>

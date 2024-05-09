@@ -5,10 +5,9 @@ function Mixers() {
     const [mixers, setMixers] = useState([]);
 
     useEffect(() => {
-        // Fetching data from the API
         async function fetchMixers() {
             try {
-                const response = await axios.get('http://localhost:4000/api/mixers'); // Adjust the URL as needed
+                const response = await axios.get('http://localhost:4000/api/mixers');
                 setMixers(response.data);
             } catch (error) {
                 console.error('Failed to fetch mixers:', error);
@@ -19,9 +18,9 @@ function Mixers() {
     }, []);
 
     return (
-        <div>
-            <h2>Mixers</h2>
-            <div className="row">
+        <div className="container mt-5">
+            <h2 className="text-center mb-4">Mixers</h2>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {mixers.length > 0 ? (
                     mixers.map(mixer => (
                         <div key={mixer._id} className="col-md-6 mb-4">
@@ -41,7 +40,9 @@ function Mixers() {
                         </div>
                     ))
                 ) : (
-                    <p>No mixers found.</p>
+                    <div className="alert alert-warning" role="alert">
+                        No mixers found.
+                    </div>
                 )}
             </div>
         </div>

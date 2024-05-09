@@ -13,36 +13,23 @@ function SubmitRecipe() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const formattedData = {
+            name: recipeName,
+            createdBy,
+            ingredients: {
+                spirits: spirits.split(',').map(spirit => spirit.trim()),
+                mixers: mixers.split(',').map(mixer => mixer.trim()),
+                tools: tools.split(',').map(tool => tool.trim()),
+            },
+            steps: steps.split('\n').map(step => step.trim()),
+            serving,
+            imageUrl
+        };
 
         try {
-            // Format the ingredients from string to array as expected by the backend
-            const spiritsArray = spirits.split(',').map(spirit => spirit.trim());
-            const mixersArray = mixers.split(',').map(mixer => mixer.trim());
-            const toolsArray = tools.split(',').map(tool => tool.trim());
-            const stepsArray = steps.split('\n').filter(step => step.trim() !== '');
-            console.log("name: " + recipeName + "\ncreatedBy: " + createdBy + "\ningredients.spirits: " + spiritsArray
-                + "\ningredients.mixers: " + mixersArray + "\ningredients.tools: " + toolsArray              
-                + "\nsteps: " + stepsArray + "\nserving: " + serving + "\nimageUrl: " + imageUrl);
-
-            const newRecipe = {
-                name: recipeName,
-                createdBy,
-                ingredients: {
-                    spirits: spiritsArray,
-                    mixers: mixersArray,
-                    tools: toolsArray,
-                },
-                steps: stepsArray,
-                serving,
-                imageUrl
-            };
-
-            // POST request to the backend using axios
-            const response = await axios.post('http://localhost:4000/api/recipes', newRecipe);
-            console.log('Recipe submitted successfully:', response.data);
+            const response = await axios.post('http://localhost:4000/api/recipes', formattedData);
             alert('Recipe submitted successfully!');
-
-            // Clear the form fields after successful submission
+            // Reset fields
             setRecipeName('');
             setCreatedBy('');
             setSpirits('');
@@ -58,78 +45,96 @@ function SubmitRecipe() {
     };
 
     return (
-        <form onSubmit={handleSubmit} 
-          style={{
-          textAlign: "center",
-          justifyContent: "center",
-          alignItems: "center",
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "80vh",
-        }}>
-            <h2>Submit a New Recipe</h2> <br/>
-            <input
-                type="text"
-                value={recipeName}
-                onChange={(e) => setRecipeName(e.target.value)}
-                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
-                placeholder="Recipe Name"
-                required
-            /> <br/>
-            <input
-                type="text"
-                value={createdBy}
-                onChange={(e) => setCreatedBy(e.target.value)}
-                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
-                placeholder="Created By"
-                required
-            /> <br/>
-            <textarea
-                value={spirits}
-                onChange={(e) => setSpirits(e.target.value)}
-                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
-                placeholder="Spirits (comma-separated)"
-                required
-            /> <br/>
-            <textarea
-                value={mixers}
-                onChange={(e) => setMixers(e.target.value)}
-                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
-                placeholder="Mixers (comma-separated)"
-                required
-            /> <br/> 
-            <textarea
-                value={tools}
-                onChange={(e) => setTools(e.target.value)}
-                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
-                placeholder="Tools (comma-separated)"
-                required
-            /> <br/> 
-            <textarea
-                value={steps}
-                onChange={(e) => setSteps(e.target.value)}
-                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
-                placeholder="Steps (one per line)"
-                required
-            /> <br/> 
-            <input
-                type="text"
-                value={serving}
-                onChange={(e) => setServing(e.target.value)}
-                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
-                placeholder="Serving"
-                required
-            /> <br/> 
-            <input
-                type="text"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-                style={{ width: "200px", borderRadius: 20, paddingLeft: 10 }}
-                placeholder="Image URL"
-                required
-            /> <br/> 
-            <button type="submit" style={{width: "200px",fontWeight: "bold", borderRadius: 20, backgroundColor: "blue", color: "white"}}>Submit Recipe</button>
-        </form>
+        <div className="container mt-5">
+            <h2>Submit a New Recipe</h2>
+            <form onSubmit={handleSubmit} className="mb-3">
+                <div className="form-group">
+                    <label>Recipe Name</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={recipeName}
+                        onChange={(e) => setRecipeName(e.target.value)}
+                        placeholder="Enter Recipe Name"
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Created By</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={createdBy}
+                        onChange={(e) => setCreatedBy(e.target.value)}
+                        placeholder="Creator's Name"
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Spirits</label>
+                    <textarea
+                        className="form-control"
+                        value={spirits}
+                        onChange={(e) => setSpirits(e.target.value)}
+                        placeholder="List spirits, separated by commas"
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Mixers</label>
+                    <textarea
+                        className="form-control"
+                        value={mixers}
+                        onChange={(e) => setMixers(e.target.value)}
+                        placeholder="List mixers, separated by commas"
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Tools</label>
+                    <textarea
+                        className="form-control"
+                        value={tools}
+                        onChange={(e) => setTools(e.target.value)}
+                        placeholder="List tools, separated by commas"
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Steps</label>
+                    <textarea
+                        className="form-control"
+                        value={steps}
+                        onChange={(e) => setSteps(e.target.value)}
+                        placeholder="Describe steps, each on a new line"
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Serving</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={serving}
+                        onChange={(e) => setServing(e.target.value)}
+                        placeholder="Serving details"
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Image URL</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                        placeholder="Enter image URL"
+                        required
+                    />
+                </div>
+                <button type="submit" className="btn btn-primary">Submit Recipe</button>
+            </form>
+        </div>
     );
 }
 
