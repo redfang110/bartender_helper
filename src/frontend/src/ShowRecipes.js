@@ -2,187 +2,92 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function ShowRecipes({ userId }) {
-    const [recipes, setRecipes] = useState([]); // State to store the recipes data
-    const [filteredRecipes, setFilteredRecipes] = useState([]);
-    const [returnRecipes, setReturnRecipes] = useState([]);
-    const [showNone, setShowNone] = useState(false)
-    const [showAll, setShowAll] = useState(false)
-
-    const [userOwnedSpirits, setUserOwnedSpirits] = useState([]);
-    const [userOwnedMixers, setUserOwnedMixers] = useState([]);
-    const [userFav, setUserFav] = useState([]);
-
-    const [onlyOwnedSpirits, setOnlyOwnedSpirits] = useState(false);
-    const [onlyOwnedMixers, setOnlyOwnedMixers] = useState(false);
-    const [onlyFav, setOnlyFav] = useState(false);
+    const [recipes, setRecipes] = useState([]);
+    const [showRecipes, setShowRecipes] = useState([]);
+    const [userRecipes, setUserRecipes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-
-    const updateSearch = () => {
-        if (searchTerm != '') {
-            let newFilteredRecipes = [];
-            let recipesToCheck = filteredRecipes.length > 0 ? filteredRecipes : recipes;
-            recipesToCheck.forEach(function(recipe) {
-                if (recipe.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                    newFilteredRecipes.push(recipe);
-                }
-                if (recipe.spirits) {
-                    recipe.spirits.forEach(function(spirit) {
-                        if (spirit.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                            newFilteredRecipes.push(recipe);
-                        }
-                    });
-                }
-                if (recipe.mixers) {
-                    recipe.mixers.forEach(function(mixer) {
-                        if (mixer.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                            newFilteredRecipes.push(recipe);
-                        }
-                    });
-                }
-            });
-            setReturnRecipes(newFilteredRecipes);
-            if (newFilteredRecipes.length < 1) {
-                setShowNone(true);
-                setReturnRecipes([]);
-            } else {
-                setShowNone(false);
-            }
-        } else {
-            if (filteredRecipes.length < 1) {
-                setReturnRecipes(recipes);
-            } else {
-                setReturnRecipes(filteredRecipes);
-            }
-        }
-    }
-
-    const updateFilteredRecipes = () => {
-        if (!onlyFav && !onlyOwnedSpirits && !onlyOwnedMixers) {
-            setFilteredRecipes([]);
-            if (searchTerm == '') {
-                setShowNone(false);
-            } else {
-                setFilteredRecipes([]);
-            }
-            return;
-        }
-        let newFilteredRecipes = [];
-        let recipesToCheck = filteredRecipes.length > 0 ? filteredRecipes : recipes;
-        if (onlyFav) {
-            recipesToCheck.forEach(function(recipe) {
-                if (recipe.name && userFav.includes(recipe.name) && !newFilteredRecipes.includes(recipe)) {
-                    newFilteredRecipes.push(recipe);
-                }
-            });
-        }
-        if (onlyOwnedSpirits) {
-            recipesToCheck.forEach(function(recipe) {
-                if (recipe.spirit) {
-                    recipe.spirits.forEach(function(spirit) {
-                        if (userOwnedSpirits.includes(spirit.name) && !newFilteredRecipes.includes(recipe)) {
-                            newFilteredRecipes.push(recipe);
-                        }
-                    });
-                }
-            });
-        }
-        if (onlyOwnedMixers) {
-            recipesToCheck.forEach(function(recipe) {
-                if (recipe.mixer) {
-                    recipe.mixers.forEach(function(mixer) {
-                        if (userOwnedMixers.includes(mixer.name) && !newFilteredRecipes.includes(recipe)) {
-                            newFilteredRecipes.push(recipe);
-                        }
-                    });
-                }
-            });
-        }
-        setFilteredRecipes(newFilteredRecipes);
-        if (newFilteredRecipes.length < 1) {
-            setShowNone(true);
-            setReturnRecipes([]);
-        } else {
-            setShowNone(false);
-        }
-    }
-
-    const handleOnlyOwnedSpirits = () => {
-        setOnlyOwnedSpirits(!onlyOwnedSpirits);
-    }
-
-    const handleOnlyOwnedMixers = () => {
-        setOnlyOwnedMixers(!onlyOwnedMixers);
-    }
-
-    const handleOnlyFav = () => {
-        setOnlyFav(!onlyFav);
-    }
-
-    useEffect(() => {
-        updateSearch();
-    }, [searchTerm]);
-
-    useEffect(() => {
-        updateFilteredRecipes();
-    }, [onlyOwnedSpirits, onlyOwnedMixers, onlyFav]);
+    const [showOnlyOwned, setShowOnlyOwned] = useState(false);
 
     useEffect(() => {
         async function fetchRecipes() {
             try {
-                const response = await axios.get('http://localhost:4000/api/recipes'); // Adjust this URL to your API
+                const response = await axios.get('http://localhost:4000/api/recipes');
                 setRecipes(response.data);
-            
-                const user = await axios.get('http://localhost:4000/api/users/' + userId);
-                setUserOwnedSpirits(user.data.spirits);
-                setUserOwnedMixers(user.data.mixers);
-                setUserFav(user.data.recipes);
+
+                const user = await axios.get(`http://localhost:4000/api/users/${userId}`);
+                setUserRecipes(user.data.recipes);
             } catch (error) {
                 console.error('Failed to fetch recipes:', error);
             }
         }
+
         fetchRecipes();
-    }, []);
+    }, [userId]);
 
     useEffect(() => {
-        if (returnRecipes.length < 1 && !onlyFav && !onlyOwnedSpirits && !onlyOwnedMixers && searchTerm == '' && !showNone) {
-            setReturnRecipes(recipes);
+        const filtered = showOnlyOwned
+            ? recipes.filter(recipe => userRecipes.includes(recipe._id))
+            : recipes;
+        setShowRecipes(filtered);
+    }, [recipes, userRecipes, showOnlyOwned]);
+
+    const handleAddRemoveRecipe = async (recipeId) => {
+        const isOwned = userRecipes.includes(recipeId);
+        const endpoint = isOwned ? 'remove-recipe' : 'add-recipe';
+        try {
+            const response = await axios.post(`http://localhost:4000/api/users/${endpoint}`, { userId, recipeId });
+            console.log(response); // Debugging output to see the server response
+            const updatedUser = await axios.get(`http://localhost:4000/api/users/${userId}`);
+            setUserRecipes(updatedUser.data.recipes);
+        } catch (error) {
+            console.error(`Failed to ${isOwned ? 'remove' : 'add'} recipe:`, error);
+            alert(error.message); // Show error message in UI for better debugging
         }
-        if (showAll) {
-            setReturnRecipes(recipes);
-        }
-    });
+    };
+    
 
     return (
-        <div className="container">
+        <div>
             <div style={{ textAlign: 'center' }}>
-                <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} style={{ width: '600px', borderRadius: 20, paddingLeft: 10, margin: 10 }} /> <br />
-                {/* <button onClick={handleSearch} style={{ fontWeight: "bold", backgroundColor: "blue", color: "white", paddingLeft: 15, paddingRight: 15, marginLeft: 10}}>Search</button> <br /> */}
-                <button onClick={handleOnlyOwnedSpirits} style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: !onlyOwnedSpirits ? "blue" : "gray", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}>Only Owned Spirits</button>
-                <button onClick={handleOnlyOwnedMixers} style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: !onlyOwnedMixers ? "blue" : "gray", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}>Only Owned Mixers</button>
-                <button onClick={handleOnlyFav} style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: !onlyFav ? "blue" : "gray", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}>Only Favorites</button>
-                {/* <button onClick={handleShowAll} style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: !showAll ? "blue" : "gray", color: "white", marginLeft: 25}}>Show All</button> */}
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    style={{ width: '600px', borderRadius: 20, paddingLeft: 10, margin: 10 }}
+                />
+                <br />
+                <button
+                    onClick={() => setShowOnlyOwned(!showOnlyOwned)}
+                    style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: showOnlyOwned ? "gray" : "blue", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}
+                >
+                    {showOnlyOwned ? 'Show All Recipes' : 'Show Only Owned Recipes'}
+                </button>
             </div>
-            <h2 className="my-4">Recipes</h2>
-            <div className="row">
-                {returnRecipes.length > 0 ? (
-                    returnRecipes.map(recipe => (
-                        <div className="col-md-4 mb-4" key={recipe._id}>
+            <h2 className="mb-4">Recipes</h2>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {showRecipes.length > 0 ? (
+                    showRecipes.map(recipe => (
+                        <div key={recipe._id} className="col">
                             <div className="card">
-                                {recipe.imageUrl && (
-                                    <img src={recipe.imageUrl} alt={recipe.name} className="card-img-top" style={{ height: '200px', objectFit: 'cover' }} />
-                                )}
+                                <div className="image-container" style={{ maxHeight: 400, maxWidth: 350, textAlign: "center" }}>
+                                    <img src={recipe.imageUrl} className="card-img-top" alt={recipe.name} style={{ objectFit: "contain", maxHeight: 250, maxWidth: 250, height: "auto", width: "auto" }}/>
+                                </div>
                                 <div className="card-body">
                                     <h5 className="card-title">{recipe.name}</h5>
-                                    <p className="card-text">{recipe.steps.join('\n')}</p>
-                                    <footer className="blockquote-footer">Created by: {recipe.createdBy}</footer>
+                                    <p className="card-text">{recipe.description}</p>
+                                    <button
+                                        onClick={() => handleAddRemoveRecipe(recipe._id)}
+                                        style={{ fontWeight: "bold", borderRadius: 20, backgroundColor: !userRecipes.includes(recipe._id) ? "blue" : "gray", color: "white", marginLeft: 10, marginRight: 10, marginTop: 10}}
+                                    >
+                                        Mark Owned
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     ))
                 ) : (
-                    <div className="alert alert-warning" role="alert">
-                        No recipes found.
-                    </div>
+                    <p>No recipes found.</p>
                 )}
             </div>
         </div>
