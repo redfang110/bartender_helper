@@ -66,9 +66,9 @@ function LoggedIn({ id }) {
                         {/* <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/ingredients">Ingredients</NavLink>
                         </li> */}
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/submit-recipe">Submit Recipe</NavLink>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active" to="/about">About</NavLink>
                         </li>
@@ -76,7 +76,7 @@ function LoggedIn({ id }) {
                 </nav>
                 <Routes>
                     {/* <Route path="/ingredients" element={<Ingredients setRecipes={setRecipes} recipes={recipes} />} /> */}
-                    <Route path="/submit-recipe" element={<SubmitRecipe />} />
+                    {/* <Route path="/submit-recipe" element={<SubmitRecipe />} /> */}
                     <Route path="/spirits" element={<Spirits userId={id}/>} />
                     <Route path="/mixers" element={<Mixers userId={id}/>} />
                     <Route path="/tools" element={<Tools userId={id}/>} />
